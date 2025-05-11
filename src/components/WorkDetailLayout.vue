@@ -50,6 +50,8 @@ const baseURL = import.meta.env.BASE_URL
 </template>
 
 <style scoped lang="scss">
+@use "@/styles/mixin" as *;
+
 .work__category {
   margin-bottom: 10px;
 }
@@ -71,6 +73,11 @@ const baseURL = import.meta.env.BASE_URL
   object-fit: contain;
   display: block;
   margin: 0 auto;
+  @include sp {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
 }
 
 .content__box {
@@ -79,12 +86,21 @@ const baseURL = import.meta.env.BASE_URL
   justify-content: space-between;
   gap: 3%;
   width: 100%;
+  @include sp {
+    display: block;
+  }
 
   .box--side {
     width: 35%;
+    @include sp {
+      width: 100%;
+    }
   }
   .box--main {
     width: 65%;
+    @include sp {
+      width: 100%;
+    }
   }
 
   .detail__list {

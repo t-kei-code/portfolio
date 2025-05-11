@@ -11,13 +11,27 @@ let material, geometry, particles
 let group, scene, renderer, camera, light, loader3d, animationId
 let gsapTimeline
 let isMounted = true
-const clock = new THREE.Clock() // ⏳ 経過時間管理用
+const clock = new THREE.Clock() //  経過時間管理用
 
 function onResize() {
-  if (!camera || !renderer) return
-  camera.aspect = window.innerWidth / window.innerHeight
+  if (!camera || !renderer || !canvasRef.value) return
+
+  const width = window.innerWidth
+  const height = window.innerHeight
+  const dpr = window.devicePixelRatio || 1
+
+  camera.aspect = width / height
   camera.updateProjectionMatrix()
-  renderer.setSize(window.innerWidth, window.innerHeight)
+
+  renderer.setSize(width, height)
+  renderer.setPixelRatio(dpr)
+
+  const canvas = renderer.domElement
+  canvas.style.width = width + 'px'
+  canvas.style.height = height + 'px'
+ 
+  canvas.style.maxWidth = '100%'; // ← これも重要（オーバーサイズ対策）
+  canvas.style.display = 'block'; // ← ブラウザによってはこれがないと効かない
 }
 
 onMounted(() => {
@@ -162,8 +176,8 @@ onMounted(() => {
     if (!isMounted) return
     requestAnimationFrame(animate)
 
-    const elapsedTime = clock.getElapsedTime() // ⏳ 経過時間（秒）
-    group.rotation.y = elapsedTime * 0.5 // ✅ FPS に依存せず一定速度！
+    const elapsedTime = clock.getElapsedTime() //  経過時間（秒）
+    group.rotation.y = elapsedTime * 0.5 //  FPS に依存せず一定速度
 
     renderer.render(scene, camera)
   }

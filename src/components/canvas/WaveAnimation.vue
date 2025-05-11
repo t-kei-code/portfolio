@@ -57,10 +57,11 @@ onUnmounted(() => {
   window.removeEventListener('resize', handleResize)
   ctx = null // ctx を解放
 })
+
 </script>
 
 <template>
-  <canvas ref="canvasRef"></canvas>
+  <canvas class="waveCanvas" ref="canvasRef"></canvas>
 </template>
 
 <style scoped>
@@ -68,7 +69,8 @@ canvas {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
+  opacity: 0.5;
 }
 </style>

@@ -34,6 +34,8 @@ const SelectedComponent = works[workId]
 </template>
 
 <style scoped lang="scss">
+@use "@/styles/mixin" as *;
+
 .container {
   background-color: rgb(235, 232, 232);
   padding: 100px 10%;

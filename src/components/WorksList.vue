@@ -75,24 +75,35 @@ const works = [
   </ul>
 </template>
 
-<style scoped>
-.works__list {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
+<style scoped lang="scss">
+@use "@/styles/mixin" as *;
+
+.works {
+    &__list {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    @include sp {
+      display: block;
+    }
+  }
+
+  &__item {
+    width: calc(45% - 20px);
+    margin-bottom: 30px;
+    font-size: 0.8rem;
+    @include sp {
+      width: 100%;
+    }
+  }
+  &__img {
+    object-fit: contain;
+    width: 100%;
+    height: 250px;
+    border-radius: 3px;
+    /* box-shadow: 2px 2px 2px 2px rgba(161, 161, 161, 0.35);
+    background-color: rgb(245, 245, 245); */
+  }
 }
 
-.works__item {
-  width: calc(45% - 20px);
-  margin-bottom: 30px;
-  font-size: 0.8rem;
-}
-.works__img {
-  object-fit: contain;
-  width: 100%;
-  height: 250px;
-  border-radius: 3px;
-  /* box-shadow: 2px 2px 2px 2px rgba(161, 161, 161, 0.35);
-  background-color: rgb(245, 245, 245); */
-}
 </style>

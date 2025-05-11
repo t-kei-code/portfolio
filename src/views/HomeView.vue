@@ -114,7 +114,7 @@ import WorksList from '@/components/WorksList.vue'
 
 /* section */
 section {
-  padding: 30px 15%;
+  padding: 30px 5%;
 }
 
 .section__title {
