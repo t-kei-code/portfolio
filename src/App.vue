@@ -114,14 +114,14 @@ body {
     height: 100%;
     width: 50px;
     padding: 3px;
-    background-color: black;
+    background-color: rgba(255, 255, 255,0.2);
     position: absolute;
     top: 0;
     right: 0;
     span {
       width: 100%;
       height: 1px;
-      background-color: white;
+      background-color: rgb(255, 255, 255);
       position: absolute;
       top: 50%;
       &:nth-last-of-type(1) {

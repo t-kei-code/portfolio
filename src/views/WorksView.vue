@@ -7,6 +7,7 @@ import WorkDetail04 from '@/components/Works/WorkDetail04.vue'
 import WorkDetail05 from '@/components/Works/WorkDetail05.vue'
 import WorkDetail06 from '@/components/Works/WorkDetail06.vue'
 import WorkDetail07 from '@/components/Works/WorkDetail07.vue'
+import WorkDetail08 from '@/components/Works/WorkDetail08.vue'
 const route = useRoute()
 const workId = route.params.id
 
@@ -18,6 +19,7 @@ const works = {
   work05: WorkDetail05,
   work06: WorkDetail06,
   work07: WorkDetail07,
+  work08: WorkDetail08,
 }
 
 const SelectedComponent = works[workId]
@@ -38,7 +40,7 @@ const SelectedComponent = works[workId]
 
 .container {
   background-color: rgb(235, 232, 232);
-  padding: 100px 10%;
+  padding: 100px 5%;
 }
 
 .section__title {

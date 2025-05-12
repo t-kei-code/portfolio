@@ -14,12 +14,14 @@ const workData = {
 
 <template>
   <WorkDetailLayout v-bind="workData">
-    <p>
-      合同会社Work様の会社立ち上げにあたり、コーポレートサイトのデザイン、コーディング、wordpressテーマ化を行いました。
-    </p>
-    <p>
+    <template #summary>
+      合同会社Work様の会社立ち上げにあたり、コーポレートサイトのデザイン、コーディング、wordpressテーマ化を行いました。<br>
       クライアント様の「写真や動画は自分で作りたい、テキストは自由に変更可能にしてほしい」との要望にお応えするため、
       全ページwordpressテーマ化をし、管理画面から自由にコンテンツを変更できるよう実装しました。
-    </p>
+    </template>
+    <template #point>
+      お知らせページではお客様がwordpressパネルから簡単に記事投稿できる仕組みを実装しました。
+      また、新着記事がトップページに自動的に表示されるよう工夫しました。
+    </template>
   </WorkDetailLayout>
 </template>

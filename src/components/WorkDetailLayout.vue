@@ -34,12 +34,15 @@ const baseURL = import.meta.env.BASE_URL
             <h5 class="detail__title">制作期間</h5>
             <p>{{ duration }}</p>
           </li>
+          <li>
+            <h5 class="detail__title">概要</h5>
+            <p><slot name="summary"></slot></p>
+          </li>
+          <li>
+            <h5 class="detail__title">工夫した点</h5>
+            <p><slot name="point"></slot></p>
+          </li>
         </ul>
-      </div>
-
-      <div class="box--main">
-        <h4 class="detail__title">概要</h4>
-        <slot></slot>
       </div>
     </div>
   </div>
@@ -68,7 +71,8 @@ const baseURL = import.meta.env.BASE_URL
 }
 
 .work__img {
-  width: 800px;
+  width: 100%;
+  max-width: 800px;
   height: 500px;
   object-fit: contain;
   display: block;
@@ -81,37 +85,50 @@ const baseURL = import.meta.env.BASE_URL
 }
 
 .content__box {
-  margin-top: 50px;
-  display: flex;
-  justify-content: space-between;
-  gap: 3%;
+  margin-top: 80px;
   width: 100%;
   @include sp {
     display: block;
   }
 
   .box--side {
-    width: 35%;
+    width: 100%;
     @include sp {
       width: 100%;
     }
   }
   .box--main {
-    width: 65%;
+    width: 80%;
     @include sp {
       width: 100%;
     }
   }
 
   .detail__list {
+    width: 100%;
     li {
-      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 80px;
+      @include sp {
+        margin-bottom: 54px;
+        display: block;
+      }
+    }
+    p {
+      width: 80%;
+      @include sp {
+        width: 100%;
+      }
     }
   }
 
   .detail__title {
     font-weight: bold;
     font-size: 1.1rem;
+    @include sp{
+      margin-bottom: 18px;
+    }
   }
 }
 

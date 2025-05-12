@@ -14,12 +14,14 @@ const workData = {
 
 <template>
   <WorkDetailLayout v-bind="workData">
-    <p>
+    <template #summary>
+      本ポートフォリオサイト
+    </template>
+    <template #point>
       本ポートフォリオサイトです。自身の持っている技術スタックを総動員して制作しました。
       メインビジュアルではblenderで制作したオブジェクトをthree.jsでパーティ化し、
       gsapでアニメーション制御を行っています。またメインシステムはvue.jsで構築し、
       シームレスなページ遷移と効率的なコード設計を実現しました。
-    </p>
-    <p>鋭意制作中。</p>
+    </template>
   </WorkDetailLayout>
 </template>

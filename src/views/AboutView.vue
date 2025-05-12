@@ -57,7 +57,7 @@ import AboutTextParticle from '@/components/AboutTextParticle.vue'
     </div>
   </section>
 
-  <!-- <section>
+  <section>
     <h2 class="section__title">
       <p class="section__title--en">Strengths</p>
       <p class="section__title--jp">強み</p>
@@ -65,7 +65,7 @@ import AboutTextParticle from '@/components/AboutTextParticle.vue'
     <p>・難しいことに挑戦する気概、自走力</p>
     <p>・興味の幅が広い</p>
     <p>・クリエイターソフトに慣れるのが早い</p>
-  </section> -->
+  </section>
 
   <section>
     <h2 class="section__title">障害について</h2>

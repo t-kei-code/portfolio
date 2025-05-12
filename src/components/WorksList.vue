@@ -54,10 +54,10 @@ const works = [
   },
   {
     id: 'work08',
-    title: '準備中',
-    category: 'デザイン',
+    title: '青牡丹工務店 コーポレートサイト',
+    category: 'コーディング',
     occupation: '課題',
-    image: '',
+    image: 'aobotan.png',
   },
 ]
 </script>
