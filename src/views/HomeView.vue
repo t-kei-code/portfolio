@@ -4,9 +4,9 @@ import WorksList from '@/components/WorksList.vue'
 </script>
 
 <template>
-  <div class="mainVisual">
+  <div class="mv">
     <ParticleAnimation></ParticleAnimation>
-    <p class="title">
+    <p class="mv__title">
       Kei Tsukamoto<br />
       Portfolio
     </p>
@@ -60,21 +60,25 @@ import WorksList from '@/components/WorksList.vue'
   </section>
 </template>
 
-<style scoped>
-.mainVisual {
+<style scoped lang="scss">
+@use "@/styles/mixin" as *;
+.mv {
   position: relative;
   top: 0;
   left: 0;
-}
 
-.title {
+  &__title {
   position: absolute;
   top: 50%;
   left: 25%;
   transform: translate(-50%, -50%);
   color: white;
-  font-size: 4rem;
+  font-size: clamp(3rem, 2.648rem + 1.5vw, 4rem);
   pointer-events: none;
+  @include sp {
+    left: 35%;
+  }
+}
 }
 
 /*//////////////// section__lead ///////////////////*/
@@ -85,13 +89,13 @@ import WorksList from '@/components/WorksList.vue'
   color: #787069;
 }
 .lead__title {
-  font-size: 2rem;
+  font-size: clamp(1.5rem, 1.324rem + 0.75vw, 2rem);
   font-weight: bold;
   letter-spacing: 0.05em;
   margin-bottom: 15px;
 }
 .lead__text {
-  font-size: 1.1rem;
+  font-size: clamp(1rem, 0.912rem + 0.38vw, 1.25rem);
   line-height: 1.8;
   color: #555;
 }
@@ -166,6 +170,7 @@ section {
 
 .about__text {
   width: 50%;
+  line-height: 1.8;
 }
 
 .about__item:nth-of-type(1) {

@@ -13,5 +13,16 @@ const workData = {
 </script>
 
 <template>
-  <WorkDetailLayout v-bind="workData" />
+  <WorkDetailLayout v-bind="workData">
+  <template #summary>
+      たいよう保育園(架空)開所に伴い、ホームページのデザインとコーディングを行いました。
+    </template>
+    <template #point>
+      <p>
+        かわいらしさを大切にしながらも、シンプルで洗練されたおしゃれな印象を目指しました。<br>
+        メインビジュアルでは明朝体を採用し、キャッチコピーは縦書きで配置することで、上品さと独自性を演出しています。
+      </p>
+      <p>コーディング：全体のSCSS設計はBEMに従い、保守性を意識しました。</p>
+    </template>
+  </WorkDetailLayout>
 </template>

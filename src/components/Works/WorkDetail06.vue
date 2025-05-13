@@ -14,8 +14,17 @@ const workData = {
 
 <template>
   <WorkDetailLayout v-bind="workData">
-    <p>イタリアンレストランSHU様(架空)のLPサイトを制作しました。</p>
+    <template #summary>
+      イタリアンダイニングSHU(架空)のホームページのデザインとコーディングを行いました。
+    </template>
+    <template #point>
+      <p>
+        オフィス街にある隠れ家的イタリアン。落ち着いていておしゃれ、気軽に行ける雰囲気を目指しました。
+      </p>
+      <p>コアターゲット：新卒入社のOL 気軽に先輩を誘える店が欲しいと思っている。</p>
+    </template>
   </WorkDetailLayout>
+
   <div class="img__container">
     <img class="img--sp" src="/spサイズ.jpg" alt="" />
     <img class="img--pc" src="/pcサイズ.jpg" alt="" />

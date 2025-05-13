@@ -85,8 +85,9 @@ const baseURL = import.meta.env.BASE_URL
 }
 
 .content__box {
-  margin-top: 80px;
+  margin: 80px auto 0;
   width: 100%;
+  max-width: 1200px;
   @include sp {
     display: block;
   }
@@ -109,7 +110,7 @@ const baseURL = import.meta.env.BASE_URL
     li {
       display: flex;
       justify-content: space-between;
-      margin-bottom: 80px;
+      margin-bottom: 64px;
       @include sp {
         margin-bottom: 54px;
         display: block;

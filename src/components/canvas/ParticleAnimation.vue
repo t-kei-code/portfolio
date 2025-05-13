@@ -13,6 +13,37 @@ let gsapTimeline
 let isMounted = true
 const clock = new THREE.Clock() //  経過時間管理用
 
+function extractPosition(model, scale = 1) {
+  const w = window.innerWidth
+  if (scale === undefined) {
+    if (w < 768) scale = 0.5
+    else if (w < 1024) scale = 0.8
+    else scale = 1.0
+  }
+
+  model.updateMatrixWorld(true)
+
+  let positions = []
+  model.traverse((child) => {
+    if (child instanceof THREE.Mesh) {
+      const positionAttribute = child.geometry.attributes.position
+      const tempVec = new THREE.Vector3()
+
+      for (let i = 0; i < positionAttribute.count; i++) {
+        tempVec.set(
+          positionAttribute.getX(i) * scale,
+          positionAttribute.getY(i) * scale,
+          positionAttribute.getZ(i) * scale
+        )
+        tempVec.applyMatrix4(child.matrixWorld)
+        positions.push(tempVec.x, tempVec.y, tempVec.z)
+      }
+    }
+  })
+  return positions
+}
+
+
 function onResize() {
   if (!camera || !renderer || !canvasRef.value) return
 
@@ -26,12 +57,34 @@ function onResize() {
   renderer.setSize(width, height)
   renderer.setPixelRatio(dpr)
 
+  let groupScale = 1.0
+  if (width < 768) groupScale = 0.8
+  else if (width < 1024) groupScale = 1
+  else groupScale = 1.6
+  group.scale.set(groupScale, groupScale, groupScale)
+
+
   const canvas = renderer.domElement
   canvas.style.width = width + 'px'
   canvas.style.height = height + 'px'
- 
-  canvas.style.maxWidth = '100%'; // ← これも重要（オーバーサイズ対策）
-  canvas.style.display = 'block'; // ← ブラウザによってはこれがないと効かない
+  canvas.style.maxWidth = '100%'
+  canvas.style.display = 'block'
+
+  // パーティクル頂点をスケールに応じて再構成
+  if (modelA && modelB && modelC && geometry) {
+    positionA = extractPosition(modelA)
+    positionB = extractPosition(modelB)
+    positionC = extractPosition(modelC)
+
+    const modelAPosition = new Float32Array(positionA)
+    const modelBPosition = new Float32Array(positionB)
+    const modelCPosition = new Float32Array(positionC)
+
+    geometry.setAttribute('position', new THREE.Float32BufferAttribute(modelAPosition, 3))
+    geometry.setAttribute('modelAPosition', new THREE.Float32BufferAttribute(modelAPosition, 3))
+    geometry.setAttribute('modelBPosition', new THREE.Float32BufferAttribute(modelBPosition, 3))
+    geometry.setAttribute('modelCPosition', new THREE.Float32BufferAttribute(modelCPosition, 3))
+  }
 }
 
 onMounted(() => {
@@ -74,27 +127,6 @@ onMounted(() => {
     positionC = extractPosition(modelC, 1)
     checkAndCreateParticles()
   })
-
-  function extractPosition(model, scale = 1) {
-    let positions = []
-    model.traverse((child) => {
-      if (child instanceof THREE.Mesh) {
-        const positionAttribute = child.geometry.attributes.position
-        const tempVec = new THREE.Vector3()
-
-        for (let i = 0; i < positionAttribute.count; i++) {
-          tempVec.set(
-            positionAttribute.getX(i) * scale,
-            positionAttribute.getY(i) * scale,
-            positionAttribute.getZ(i) * scale,
-          )
-          tempVec.applyMatrix4(child.matrixWorld)
-          positions.push(tempVec.x, tempVec.y, tempVec.z)
-        }
-      }
-    })
-    return positions
-  }
 
   function checkAndCreateParticles() {
     if (positionA && positionB && positionC) {
@@ -153,8 +185,6 @@ onMounted(() => {
     particles = new THREE.Points(geometry, material)
     group.add(particles)
     group.position.set(2, -0.7, 0)
-    group.scale.set(1.3, 1.3, 1.3)
-
     morphingAnimation()
   }
 

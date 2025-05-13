@@ -109,31 +109,56 @@ body {
     font-size: 1.7rem;
     padding-left: 30px;
   }
+
   &__btn {
     display: none;
-    height: 100%;
-    width: 50px;
-    padding: 3px;
-    background-color: rgba(255, 255, 255,0.2);
-    position: absolute;
-    top: 0;
-    right: 0;
-    span {
-      width: 100%;
-      height: 1px;
-      background-color: rgb(255, 255, 255);
-      position: absolute;
-      top: 50%;
-      &:nth-last-of-type(1) {
-        top: 30%;
-      }
-      &:nth-last-of-type(3) {
-        top: 80%;
-      }
-    }
+    z-index: 20;
 
     @include sp {
       display: block;
+      width: 56px;
+      height: 52px;
+      background-color: rgba(255, 255, 255, 0.3);
+      position: absolute;
+      top: 0;
+      right: 0;
+      z-index: 20;
+      pointer-events: auto;
+
+      span {
+        display: block;
+        position: absolute;
+        width: 32px;
+        height: 1px;
+        background: white;
+        left: 50%;
+        transform: translateX(-50%);
+        transition: all 0.3s ease;
+        &:nth-of-type(1) {
+            top: 12px;
+        }
+        &:nth-of-type(2) {
+            top: 24px;
+        }
+        &:nth-of-type(3) {
+            bottom: 12px;
+        }
+      }
+
+      &.is-active {
+        span:nth-of-type(1) {
+            transform: translateX(-50%) rotate(45deg);
+            top: 24px;
+        }
+        span:nth-of-type(2) {
+            opacity: 0;
+        }
+        span:nth-of-type(3) {
+            transform: translateX(-50%) rotate(-45deg);
+            top: 24px;
+            bottom: auto;
+        }
+      }
     }
   }
 }

@@ -13,5 +13,12 @@ const workData = {
 </script>
 
 <template>
-  <WorkDetailLayout v-bind="workData" />
+  <WorkDetailLayout v-bind="workData">
+    <template #summary>
+      スポーツ事業会社の自社アプリ「SPORTHERE」の紹介LPサイトコーディングを行いました。
+    </template>
+    <template #point>
+      全体のSCSS設計はBEMに従い、保守性を意識しました。
+    </template>
+  </WorkDetailLayout>
 </template>
