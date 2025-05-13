@@ -6,7 +6,7 @@ const workData = {
   title: '合同会社Work様 - コーポレートサイト',
   url: 'https://go-work.co.jp/',
   image: 'work.png',
-  tasks: 'デザイン/コーディング/wordpress化',
+  tasks: 'デザイン(動画、写真選定除く)/コーディング/wordpress化',
   tech: 'html, css(scss), javascript, php',
   duration: '6ヶ月',
 }

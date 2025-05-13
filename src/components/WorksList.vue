@@ -5,14 +5,14 @@ const baseURL = import.meta.env.BASE_URL
 const works = [
   {
     id: 'work01',
-    title: '合同会社Work ホームページ',
+    title: '合同会社Work様 ホームページ',
     category: 'デザイン/コーディング/wordpres化',
     occupation: 'クライアントワーク',
     image: 'work.png',
   },
   {
     id: 'work02',
-    title: 'KEI TSUKAMOTOポートフォリオサイト',
+    title: 'KEI TSUKAMOTO ポートフォリオサイト',
     category: 'デザイン/コーディング',
     occupation: '個人製作',
     image: 'portfolio.png',
@@ -56,7 +56,7 @@ const works = [
     id: 'work08',
     title: '青牡丹工務店 コーポレートサイト',
     category: 'コーディング',
-    occupation: '課題',
+    occupation: '個人製作',
     image: 'aobotan.png',
   },
 ]
@@ -81,7 +81,8 @@ const works = [
 .works {
     &__list {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    gap: 5%;
     flex-wrap: wrap;
     @include sp {
       display: block;
@@ -89,11 +90,13 @@ const works = [
   }
 
   &__item {
-    width: calc(45% - 20px);
+    width: 50%;
+    max-width: 400px;
     margin-bottom: 30px;
-    font-size: 0.8rem;
+    font-size: clamp(0.875rem, 0.831rem + 0.19vw, 1rem);
     @include sp {
       width: 100%;
+      margin:0 auto 30px;
     }
   }
   &__img {

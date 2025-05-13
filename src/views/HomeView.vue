@@ -12,28 +12,7 @@ import WorksList from '@/components/WorksList.vue'
     </p>
   </div>
 
-  <section id="lead">
-    <div class="lead__container">
-      <h2 class="lead__title">「デザイン × コードで、より自由な表現を。」</h2>
-      <p class="lead__text">
-        視覚的なデザインだけでなく、コーディングを活かした表現にも挑戦しています。<br />
-        基本的なコーディング業務に対応しつつ、インタラクティブな演出や機能美を意識したデザインの実装にも取り組んでいます。<br />
-        静的なデザインから動きのある演出まで、柔軟に対応します。
-      </p>
-    </div>
-  </section>
-
-  <section id="works" class="works">
-    <h2 class="section__title">
-      <p class="section__title--en">Works</p>
-      <p class="section__title--jp">制作物</p>
-    </h2>
-    <div class="works__container">
-      <WorksList></WorksList>
-    </div>
-  </section>
-
-  <section id="about">
+  <section id="about" class="about">
     <h2 class="section__title">
       <p class="section__title--en">About</p>
       <p class="section__title--jp">私について</p>
@@ -58,6 +37,39 @@ import WorksList from '@/components/WorksList.vue'
       </div>
     </div>
   </section>
+
+  <section id="lead" class="lead">
+    <h2 class="section__title">
+      <p class="section__title--en">Skill</p>
+      <p class="section__title--jp">できること</p>
+    </h2>
+    <div class="lead__container">
+      <ul class="lead__list">
+        <li class="lead__item">
+          <p class="lead__item-title"> コーディング</p>
+          <p class="lead__item-text">HTML / SCSS / jQuery を用いて、デザインカンプに忠実なマークアップが可能です。レスポンシブ対応やBEM設計にも対応します。</p>
+        </li>
+        <li class="lead__item">
+          <p class="lead__item-title"> デザイン</p>
+          <p class="lead__item-text">Illustrator / Photoshop / Figma を用いたバナー制作や簡単なレイアウト設計が可能です。コーダー視点で「実装しやすいデザイン」を意識しています。</p>
+        </li>
+        <li class="lead__item">
+          <p class="lead__item-title"> インタラクション・3D表現</p>
+          <p class="lead__item-text">JavaScript や Three.js を用いたアニメーション・WebGL表現の実装経験があります。ポートフォリオでは 3Dモデルやマウス連動表現を取り入れています。</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="works" class="works">
+    <h2 class="section__title">
+      <p class="section__title--en">Works</p>
+      <p class="section__title--jp">制作物</p>
+    </h2>
+    <div class="works__container">
+      <WorksList></WorksList>
+    </div>
+  </section>
 </template>
 
 <style scoped lang="scss">
@@ -73,6 +85,8 @@ import WorksList from '@/components/WorksList.vue'
   left: 25%;
   transform: translate(-50%, -50%);
   color: white;
+  font-family: "Noto Serif JP", serif;
+  font-weight: 400;
   font-size: clamp(3rem, 2.648rem + 1.5vw, 4rem);
   pointer-events: none;
   @include sp {
@@ -81,19 +95,113 @@ import WorksList from '@/components/WorksList.vue'
 }
 }
 
+/* section */
+section {
+  padding: 0 5%;
+}
+
+.section__title {
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: #7b6758;
+  margin-bottom: 30px;
+  text-align: left;
+
+  border-bottom: solid #7b6758 1px;
+}
+.section__title--en {
+  font-size: 0.8rem;
+}
+
+/* ////section__about//// */
+#about {
+  margin-top: 30px;
+}
+
+.about__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 100%;
+  margin: 0 auto;
+  @include sp {
+    display: block;
+  }
+}
+
+.about__img {
+  width: 35%;
+  height: auto;
+  @include sp {
+    width: auto;
+  }
+}
+.about__img img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.about__text {
+  width: 50%;
+  line-height: 1.8;
+  @include sp {
+    width: auto;
+  }
+}
+
+.about__item:nth-of-type(1) {
+  font-size: 0.7rem;
+}
+.about__item:nth-of-type(2) {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.about__item:nth-of-type(4) {
+  display: flex;
+  justify-content: flex-end;
+}
+.about__btn {
+  padding: 5px 10px;
+  margin-top: 10px;
+}
+
 /*//////////////// section__lead ///////////////////*/
-.lead__container {
+.lead {
+  margin-top: 30px;
+  &__container {
   text-align: center;
   max-width: 800px;
   margin: 50px auto;
   color: #787069;
+  }
+
+  &__list {
+    display: flex;
+    justify-content: center;
+    gap: 5%;
+    @include sp {
+      display: block;
+    }
+  }
+  &__item {
+    border: solid 1px #787069;
+    border-radius: 10px;
+    height: 300px;
+    padding: 10px;
+    @include sp {
+      height: auto;
+      margin-bottom: 30px;
+    }
+    &-title {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+  }
 }
-.lead__title {
-  font-size: clamp(1.5rem, 1.324rem + 0.75vw, 2rem);
-  font-weight: bold;
-  letter-spacing: 0.05em;
-  margin-bottom: 15px;
-}
+
 .lead__text {
   font-size: clamp(1rem, 0.912rem + 0.38vw, 1.25rem);
   line-height: 1.8;
@@ -116,26 +224,9 @@ import WorksList from '@/components/WorksList.vue'
   }
 }
 
-/* section */
-section {
-  padding: 30px 5%;
-}
-
-.section__title {
-  font-weight: bold;
-  font-size: 1.5rem;
-  color: #7b6758;
-  margin-bottom: 30px;
-  text-align: left;
-
-  border-bottom: solid #7b6758 1px;
-}
-.section__title--en {
-  font-size: 0.8rem;
-}
-
 /* section__work*/
 #works {
+  padding-top: 30px;
   background-color: rgb(235, 232, 232);
 }
 
@@ -145,47 +236,4 @@ section {
   margin: 0 auto;
 }
 
-/* ////section__about//// */
-#about {
-}
-
-.about__container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  width: 100%;
-  margin: 0 auto;
-}
-
-.about__img {
-  width: 35%;
-  height: auto;
-}
-.about__img img {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-}
-
-.about__text {
-  width: 50%;
-  line-height: 1.8;
-}
-
-.about__item:nth-of-type(1) {
-  font-size: 0.7rem;
-}
-.about__item:nth-of-type(2) {
-  font-size: 1.5rem;
-  margin-bottom: 10px;
-}
-
-.about__item:nth-of-type(4) {
-  display: flex;
-  justify-content: flex-end;
-}
-.about__btn {
-  padding: 5px 10px;
-}
 </style>

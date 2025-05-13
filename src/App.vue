@@ -27,6 +27,7 @@ onUnmounted(() => {
         <RouterLink to="/">Kei Tsukamoto</RouterLink>
       </li>
     </ul>
+
     <ul class="header__list">
       <li class="header__item"><RouterLink to="/">Top</RouterLink></li>
       <li class="header__item"><RouterLink to="/#works">Works</RouterLink></li>
@@ -84,6 +85,9 @@ body {
   right: 0;
   z-index: 100;
   color: aliceblue;
+  font-family: "Noto Serif JP", serif;
+  font-weight: 400;
+
   display: flex;
   background-color: transparent;
   transition:
@@ -100,16 +104,34 @@ body {
     }
   }
 
-  &__item {
-    font-size: 1.5rem;
-    padding: 10px;
+ &__item {
+  position: relative;
+  font-size: 1.5rem;
+  padding-top: 10px;
+
+  &:not(.header__logo)::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: rgba(255, 255, 255,0.8);
+    transition: width 0.3s ease;
   }
+
+  &:hover::after {
+    width: 100%;
+  }
+}
+
 
   &__logo {
     font-size: 1.7rem;
     padding-left: 30px;
   }
 
+  //メニューボタン//
   &__btn {
     display: none;
     z-index: 20;
