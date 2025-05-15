@@ -1,17 +1,8 @@
 <script setup>
-import ParticleAnimation from '@/components/canvas/ParticleAnimation.vue'
 import WorksList from '@/components/WorksList.vue'
 </script>
 
 <template>
-  <div class="mv">
-    <ParticleAnimation></ParticleAnimation>
-    <p class="mv__title">
-      Kei Tsukamoto<br />
-      Portfolio
-    </p>
-  </div>
-
   <section id="about" class="about">
     <h2 class="section__title">
       <p class="section__title--en">About</p>
@@ -227,6 +218,7 @@ section {
 /* section__work*/
 #works {
   padding-top: 30px;
+  padding-bottom: 30px;
   background-color: rgb(235, 232, 232);
 }
 

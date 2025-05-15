@@ -3,6 +3,7 @@ import { RouterLink, RouterView, useRoute } from 'vue-router'
 import { ref, onMounted, onUnmounted } from 'vue'
 import ParticleBg from './components/canvas/ParticleBg.vue'
 import WaveAnimation from './components/canvas/WaveAnimation.vue'
+import ParticleAnimation from '@/components/canvas/ParticleAnimation.vue'
 
 const route = useRoute()
 const isScrolled = ref(false) // スクロール状態を管理
@@ -21,6 +22,17 @@ onUnmounted(() => {
 </script>
 
 <template>
+  <div class="canvas" :class="{ 'is-about' : route.name === 'about'}" v-if="route.name !== 'works'">
+      <ParticleBg ></ParticleBg>
+      <WaveAnimation></WaveAnimation>
+      <ParticleAnimation></ParticleAnimation>
+
+      <div class="canvas__title">
+        <p v-if="route.name === 'home'">Kei Tsukamoto<br />Portfolio</p>
+        <p v-else-if="route.name === 'about'">ABOUT</p>
+      </div>
+  </div>
+
   <header :class="{ on: isScrolled }" class="header">
     <ul>
       <li class="header__item header__logo">
@@ -41,9 +53,6 @@ onUnmounted(() => {
   </header>
 
   <main>
-    <ParticleBg v-if="route.name !== 'works'"></ParticleBg>
-    <WaveAnimation v-if="route.name !== 'works'"></WaveAnimation>
-
     <RouterView />
   </main>
   <footer>
@@ -77,6 +86,33 @@ body {
   line-height: 1.2;
   list-style: none;
 }
+
+/////////////////////////////////////
+.canvas {
+height: 100vh;
+position: relative;
+overflow: hidden;
+
+  &__title {
+    position: absolute;
+    top: 50%;
+    left: 25%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-family: "Noto Serif JP", serif;
+    font-weight: 400;
+    font-size: clamp(3rem, 2.648rem + 1.5vw, 4rem);
+    pointer-events: none;
+    @include sp {
+      left: 35%;
+    }
+  }
+
+  &.is-about {
+    // height: 50vh;
+  }
+}
+
 
 .header {
   width: 100%;

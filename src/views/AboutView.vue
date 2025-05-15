@@ -1,13 +1,9 @@
 <script setup>
-import AboutTextParticle from '@/components/AboutTextParticle.vue'
+// import AboutTextParticle from '@/components/AboutTextParticle.vue'
 </script>
 
 <template>
-  <AboutTextParticle></AboutTextParticle>
-  <div class="about">
-    <h1>About Page</h1>
-  </div>
-
+  <!-- <AboutTextParticle></AboutTextParticle> -->
   <section id="about">
     <div class="about__container">
       <div class="about__img">
@@ -121,7 +117,6 @@ section {
 }
 
 #about {
-  margin-top: 100vh;
 }
 
 .about__container {

@@ -228,4 +228,10 @@ onUnmounted(() => {
   <canvas class="mainCanvas" ref="canvasRef"></canvas>
 </template>
 
-<style scoped></style>
+<style scoped>
+  .mainCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+</style>
