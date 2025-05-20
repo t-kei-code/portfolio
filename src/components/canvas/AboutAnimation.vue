@@ -22,12 +22,22 @@ onMounted(()=> {
     time: { value: 0 },
   },
   vertexShader: `
+    uniform float time;
     varying vec3 vNormal;
     varying vec3 vWorldPosition;
 
     void main() {
+      float frequency = 4.0;
+      float amplitude = 0.1;
+
+      //波を生成
+      float offset = sin(position.y * frequency + time) * amplitude;
+
+      //法線方向にオフセット
+      vec3 newPosition = position + normal * offset;
+
       vNormal = normalize(normalMatrix * normal);
-      vec4 worldPos = modelMatrix * vec4(position, 1.0);
+      vec4 worldPos = modelMatrix * vec4(newPosition, 1.0);
       vWorldPosition = worldPos.xyz;
       gl_Position = projectionMatrix * viewMatrix * worldPos;
     }
@@ -46,6 +56,7 @@ onMounted(()=> {
   `
 });
 
+
   const mesh = new THREE.Mesh(geometry, material);
   mesh.position.set(1.0, 1.5, 1.0)
   scene.add(mesh);
@@ -59,6 +70,7 @@ onMounted(()=> {
 
   function animate() {
       requestAnimationFrame(animate)
+      material.uniforms.time.value += 0.03;
       renderer.render(scene, camera)
     }
     animate();
