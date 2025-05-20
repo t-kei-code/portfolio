@@ -92,6 +92,11 @@ body {
 height: 100vh;
 position: relative;
 overflow: hidden;
+transition: height 1s ease;
+
+&.is-about {
+    height: 50vh;
+  }
 
   &__title {
     position: absolute;
@@ -106,10 +111,6 @@ overflow: hidden;
     @include sp {
       left: 35%;
     }
-  }
-
-  &.is-about {
-    // height: 50vh;
   }
 }
 
