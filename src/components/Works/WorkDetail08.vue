@@ -22,6 +22,7 @@ const workData = {
       変数定義と、コンポーネントごとのファイル分割によって効率的に修正を行えるよう意識しました。<br>
       「お問い合わせ」フォームでは入力チェックを行い、必須項目がすべて入力されていないとsubmitボタンをクリックできないよう実装しました。
       <img src="/public/image 34.png" alt="" srcset="">
+      <img src="/public/image 35.png" alt="" srcset="">
     </template>
   </WorkDetailLayout>
 </template>
