@@ -21,6 +21,7 @@ const workData = {
       全体のSCSS設計はBEMに従い、保守性を意識しました。<br>
       変数定義と、コンポーネントごとのファイル分割によって効率的に修正を行えるよう意識しました。<br>
       「お問い合わせ」フォームでは入力チェックを行い、必須項目がすべて入力されていないとsubmitボタンをクリックできないよう実装しました。
+      <img src="/public/image 34.png" alt="" srcset="">
     </template>
   </WorkDetailLayout>
 </template>
