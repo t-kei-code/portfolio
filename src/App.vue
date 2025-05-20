@@ -4,6 +4,7 @@ import { ref, onMounted, onUnmounted } from 'vue'
 import ParticleBg from './components/canvas/ParticleBg.vue'
 import WaveAnimation from './components/canvas/WaveAnimation.vue'
 import ParticleAnimation from '@/components/canvas/ParticleAnimation.vue'
+import AboutAnimation from './components/canvas/AboutAnimation.vue'
 
 const route = useRoute()
 const isScrolled = ref(false) // スクロール状態を管理
@@ -25,7 +26,9 @@ onUnmounted(() => {
   <div class="canvas" :class="{ 'is-about' : route.name === 'about'}" v-if="route.name !== 'works'">
       <ParticleBg ></ParticleBg>
       <WaveAnimation></WaveAnimation>
-      <ParticleAnimation></ParticleAnimation>
+      <ParticleAnimation v-if="route.name ==='home'"></ParticleAnimation>
+      <AboutAnimation v-if="route.name ==='about'"></AboutAnimation>
+
 
       <div class="canvas__title">
         <p v-if="route.name === 'home'">Kei Tsukamoto<br />Portfolio</p>
