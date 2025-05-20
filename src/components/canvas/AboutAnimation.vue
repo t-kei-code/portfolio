@@ -50,11 +50,18 @@ onMounted(()=> {
   mesh.position.set(1.0, 1.5, 1.0)
   scene.add(mesh);
 
- function animate() {
-    requestAnimationFrame(animate)
-    renderer.render(scene, camera)
+  function onResize() {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
   }
-  animate();
+  window.addEventListener("resize", onResize);
+
+  function animate() {
+      requestAnimationFrame(animate)
+      renderer.render(scene, camera)
+    }
+    animate();
 })
 
 </script>
