@@ -25,6 +25,7 @@ const workData = {
       <img src="/public/image 36.png" alt="">
       <img src="/public/image 37.png" alt="">
       <img src="/public/image 39.png" alt="">
+      <img src="/public/wp.png" alt="" srcset="">
     </template>
   </WorkDetailLayout>
 </template>
