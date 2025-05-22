@@ -22,6 +22,9 @@ const workData = {
     <template #point>
       お知らせページではお客様がwordpressパネルから簡単に記事投稿できる仕組みを実装しました。
       また、新着記事がトップページに自動的に表示されるよう工夫しました。
+      <img src="/public/image 36.png" alt="">
+      <img src="/public/image 37.png" alt="">
+      <img src="/public/image 39.png" alt="">
     </template>
   </WorkDetailLayout>
 </template>

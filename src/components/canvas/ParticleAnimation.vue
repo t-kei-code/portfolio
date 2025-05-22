@@ -3,6 +3,7 @@ import { onMounted, onUnmounted, ref } from 'vue'
 import * as THREE from 'three'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import gsap from 'gsap'
+import router from '@/router'
 
 const canvasRef = ref(null)
 
@@ -12,6 +13,7 @@ let group, scene, renderer, camera, light, loader3d, animationId
 let gsapTimeline
 let isMounted = true
 const clock = new THREE.Clock() //  経過時間管理用
+const opacity = ref(1); //画面遷移アニメーション用
 
 function extractPosition(model, scale = 1) {
   const w = window.innerWidth
@@ -151,6 +153,7 @@ onMounted(() => {
       uniforms: {
         uMorph: { value: 0.0 },
         uColor: { value: new THREE.Color('darkgray') },
+        opacity: { value: opacity.value }
       },
       vertexShader: `
         uniform float uMorph;
@@ -173,13 +176,15 @@ onMounted(() => {
       `,
       fragmentShader: `
         uniform vec3 uColor;
+        uniform float opacity;
         void main() {
-            gl_FragColor = vec4(uColor, 1);
+            gl_FragColor = vec4(uColor, opacity);
         }
       `,
       transparent: true,
       depthWrite: false,
       blending: THREE.AdditiveBlending,
+      opacity: opacity.value,
     })
 
     particles = new THREE.Points(geometry, material)
@@ -209,12 +214,25 @@ onMounted(() => {
     const elapsedTime = clock.getElapsedTime() //  経過時間（秒）
     group.rotation.y = elapsedTime * 0.5 //  FPS に依存せず一定速度
 
+    if (material) {
+     material.uniforms.opacity.value = opacity.value
+  }
+
     renderer.render(scene, camera)
   }
 
   window.addEventListener('resize', onResize)
   animate()
 })
+
+//aboutページに遷移時fadeout
+ function gotoAbout() {
+    gsap.to(opacity, {
+      value: 0,
+      duration: 0.3,
+      onComplete: () => router.push("/about")
+    })
+  }
 
 onUnmounted(() => {
   isMounted = false
@@ -226,6 +244,7 @@ onUnmounted(() => {
 
 <template>
   <canvas class="mainCanvas" ref="canvasRef"></canvas>
+  <button class="about-btn" @click="gotoAbout">Aboutへ</button>
 </template>
 
 <style scoped>
@@ -234,4 +253,17 @@ onUnmounted(() => {
     top: 0;
     left: 0;
   }
+  .about-btn {
+  position: absolute;
+  bottom: 40px;
+  right: 40px;
+  z-index: 10;
+  padding: 12px 24px;
+  background-color: white;
+  color: black;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
 </style>
