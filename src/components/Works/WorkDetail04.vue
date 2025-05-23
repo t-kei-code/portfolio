@@ -3,26 +3,26 @@ import WorkDetailLayout from '@/components/WorkDetailLayout.vue'
 
 const workData = {
   category: '課題',
-  title: 'たいよう保育園 LP',
-  url: 'https://cottleya.jobtra-itweb.com/taiyo-preschool/',
-  image: 'taiyo.png',
-  tasks: 'デザイン/コーディング/',
-  tech: 'html, css',
-  duration: '1ヶ月',
+  title: '青牡丹工務店 コーポレートサイト',
+  url: 'https://im-t-kei.peewee.jp/aobotan/',
+  image: 'aobotan.png',
+  tasks: 'コーディング',
+  tech: 'HTML, SCSS,Javascript,Jquery',
+  duration: '20日',
 }
 </script>
 
 <template>
   <WorkDetailLayout v-bind="workData">
-  <template #summary>
-      たいよう保育園(架空)開所に伴い、ホームページのデザインとコーディングを行いました。
+    <template #summary>
+      青牡丹工務店のコーディング
     </template>
     <template #point>
-      <p>
-        かわいらしさを大切にしながらも、シンプルで洗練されたおしゃれな印象を目指しました。<br>
-        メインビジュアルでは明朝体を採用し、キャッチコピーは縦書きで配置することで、上品さと独自性を演出しています。
-      </p>
-      <p>コーディング：全体のSCSS設計はBEMに従い、保守性を意識しました。</p>
+      全体のSCSS設計はBEMに従い、保守性を意識しました。<br>
+      変数定義と、コンポーネントごとのファイル分割によって効率的に修正を行えるよう意識しました。<br>
+      「お問い合わせ」フォームでは入力チェックを行い、必須項目がすべて入力されていないとsubmitボタンをクリックできないよう実装しました。
+      <img src="/public/image 34.png" alt="" srcset="">
+      <img src="/public/image 35.png" alt="" srcset="">
     </template>
   </WorkDetailLayout>
 </template>

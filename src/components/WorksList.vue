@@ -24,12 +24,12 @@ const works = [
   //   occupation: 'クライアントワーク',
   //   image: '/mockup.jpg',
   // },
-  {
+   {
     id: 'work04',
-    title: 'たいよう保育園 LP',
-    category: 'デザイン/コーディング',
-    occupation: '課題',
-    image: 'taiyo.png',
+    title: '青牡丹工務店 コーポレートサイト',
+    category: 'コーディング',
+    occupation: '個人製作',
+    image: 'aobotan.png',
   },
   {
     id: 'work05',
@@ -52,12 +52,12 @@ const works = [
     occupation: '課題',
     image: 'camera.png',
   },
-  {
+   {
     id: 'work08',
-    title: '青牡丹工務店 コーポレートサイト',
-    category: 'コーディング',
-    occupation: '個人製作',
-    image: 'aobotan.png',
+    title: 'たいよう保育園 LP',
+    category: 'デザイン/コーディング',
+    occupation: '課題',
+    image: 'taiyo.png',
   },
 ]
 </script>

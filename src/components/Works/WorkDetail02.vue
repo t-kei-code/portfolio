@@ -22,6 +22,7 @@ const workData = {
       メインビジュアルではblenderで制作したオブジェクトをthree.jsでパーティ化し、
       gsapでアニメーション制御を行っています。またメインシステムはvue.jsで構築し、
       シームレスなページ遷移と効率的なコード設計を実現しました。
+      <img src="/public/スクリーンショット 2025-05-23 121106.png" alt="" srcset="">
     </template>
   </WorkDetailLayout>
 </template>
