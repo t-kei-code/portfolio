@@ -38,15 +38,18 @@ import WorksList from '@/components/WorksList.vue'
       <ul class="lead__list">
         <li class="lead__item">
           <p class="lead__item-title"> コーディング</p>
-          <p class="lead__item-text">HTML / SCSS / jQuery を用いて、デザインカンプに忠実なマークアップが可能です。レスポンシブ対応やBEM設計にも対応します。</p>
+          <p class="lead__item-text">デザインカンプに忠実なマークアップが可能です。レスポンシブ対応やBEM設計にも対応します。</p>
+          <p class="lead__item-skill">HTML / CSS(SCSS) / Javascript / jQuery / <br>(学習中：WordPress / Vue.js)</p>
         </li>
         <li class="lead__item">
           <p class="lead__item-title"> デザイン</p>
-          <p class="lead__item-text">Illustrator / Photoshop / Figma を用いたバナー制作や簡単なレイアウト設計が可能です。コーダー視点で「実装しやすいデザイン」を意識しています。</p>
+          <p class="lead__item-text">既存素材の簡単な加工、調整、LPやバナーの制作が可能です。<br>コーダー視点で「実装しやすいデザイン」を意識しています。</p>
+          <p class="lead__item-skill">Illustrator / Photoshop / Figma</p>
         </li>
         <li class="lead__item">
           <p class="lead__item-title"> インタラクション・3D表現</p>
-          <p class="lead__item-text">JavaScript や Three.js を用いたアニメーション・WebGL表現の実装経験があります。ポートフォリオでは 3Dモデルやマウス連動表現を取り入れています。</p>
+          <p class="lead__item-text">JavaScript や Three.js を用いたアニメーション・WebGL表現の実装経験があります。3Dモデルの表示やアニメーション表現をポートフォリオサイト内で試しています。</p>
+          <p class="lead__item-skill">Three.js / GSAP / Blender</p>
         </li>
       </ul>
     </div>
@@ -89,6 +92,8 @@ import WorksList from '@/components/WorksList.vue'
 /* section */
 section {
   padding: 0 5%;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 .section__title {
@@ -115,6 +120,7 @@ section {
   align-items: center;
 
   width: 100%;
+  max-width: 800px;
   margin: 0 auto;
   @include sp {
     display: block;
@@ -163,7 +169,6 @@ section {
 .lead {
   margin-top: 30px;
   &__container {
-  text-align: center;
   max-width: 800px;
   margin: 50px auto;
   color: #787069;
@@ -178,17 +183,25 @@ section {
     }
   }
   &__item {
+    width: 33.3%;
     border: solid 1px #787069;
     border-radius: 10px;
-    height: 300px;
     padding: 10px;
     @include sp {
-      height: auto;
+      width: 100%;
       margin-bottom: 30px;
     }
     &-title {
       font-weight: bold;
       margin-bottom: 10px;
+      text-align: center;
+    }
+    &-text {
+      border-bottom: solid 1px #787069;
+      padding-bottom: 10px;
+    }
+    &-skill {
+      margin-top: 10px;
     }
   }
 }

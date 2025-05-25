@@ -49,6 +49,7 @@ const SelectedComponent = works[workId]
   font-weight: bold;
   font-size: 1.5rem;
   color: #7b6758;
+  padding-bottom: 10px;
   margin-bottom: 30px;
   border-bottom: solid #7b6758 1px;
 }

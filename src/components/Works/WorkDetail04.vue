@@ -18,11 +18,51 @@ const workData = {
       青牡丹工務店のコーディング
     </template>
     <template #point>
-      全体のSCSS設計はBEMに従い、保守性を意識しました。<br>
-      変数定義と、コンポーネントごとのファイル分割によって効率的に修正を行えるよう意識しました。<br>
-      「お問い合わせ」フォームでは入力チェックを行い、必須項目がすべて入力されていないとsubmitボタンをクリックできないよう実装しました。
-      <img src="/public/image 34.png" alt="" srcset="">
-      <img src="/public/image 35.png" alt="" srcset="">
+      <div class="point__box">
+        <img src="/public/image 35.png" alt="" srcset="">
+        <p>全体のSCSS設計はBEMに従い、保守性を意識しました。</p>
+      </div>
+      <div class="point__box">
+        <img src="/public/image 34.png" alt="" srcset="">
+        <p>SCSSファイルをページや共通パーツごとに分割し、管理や再利用しやすい設計に</p>
+      </div>
+      <div class="point__box">
+        <p>「お問い合わせ」フォームでは入力チェックを行い、必須項目がすべて入力されていないとsubmitボタンをクリックできないよう実装しました。</p>
+      </div>
+
+      <div>
+        <p>課題を通して、コーディングの正確さと効率が向上</p>
+        <ul>
+          <li>・品質チェックシートを用いた修正フローの確立</li>
+          <li>・よく使う処理やパーツのコードスニペット化</li>
+          <li>・ファイル構造のテンプレート化</li>
+        </ul>
+      </div>
     </template>
   </WorkDetailLayout>
 </template>
+
+<style lang="scss">
+@use "@/styles/mixin" as *;
+  .point__box {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    margin-bottom: 30px;
+    @include sp {
+      display: block;
+    }
+    img {
+      width: 40%;
+      @include sp {
+        width: 100%;
+      }
+    }
+    p {
+      width: 40%;
+      @include sp {
+        width: 100%;
+      }
+    }
+  }
+</style>

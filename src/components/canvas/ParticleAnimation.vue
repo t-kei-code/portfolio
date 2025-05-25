@@ -244,7 +244,7 @@ onUnmounted(() => {
 
 <template>
   <canvas class="mainCanvas" ref="canvasRef"></canvas>
-  <button class="about-btn" @click="gotoAbout">Aboutへ</button>
+  <!-- <button class="about-btn" @click="gotoAbout">Aboutへ</button> -->
 </template>
 
 <style scoped>

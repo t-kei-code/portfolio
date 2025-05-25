@@ -20,6 +20,12 @@ onMounted(() => {
 onUnmounted(() => {
   window.removeEventListener('scroll', handleScroll)
 })
+
+const isMenuOpen = ref(false)
+const toggleMenu = () => {
+  isMenuOpen.value = !isMenuOpen.value
+}
+
 </script>
 
 <template>
@@ -36,19 +42,19 @@ onUnmounted(() => {
       </div>
   </div>
 
-  <header :class="{ on: isScrolled }" class="header">
+  <header :class="{ on: isScrolled , 'subpage' : route.name !== 'home'}" class="header">
     <ul>
       <li class="header__item header__logo">
         <RouterLink to="/">Kei Tsukamoto</RouterLink>
       </li>
     </ul>
 
-    <ul class="header__list">
-      <li class="header__item"><RouterLink to="/">Top</RouterLink></li>
-      <li class="header__item"><RouterLink to="/#works">Works</RouterLink></li>
-      <li class="header__item"><RouterLink to="/about">About</RouterLink></li>
+    <ul class="header__list" :class="{ 'is-open': isMenuOpen }">
+      <li class="header__item"><RouterLink to="/" @click="isMenuOpen = false">Top</RouterLink></li>
+      <li class="header__item"><RouterLink to="/#works" @click="isMenuOpen = false">Works</RouterLink></li>
+      <li class="header__item"><RouterLink to="/about" @click="isMenuOpen = false">About</RouterLink></li>
     </ul>
-    <div class="header__btn">
+    <div class="header__btn" :class="{ 'is-active': isMenuOpen }" @click="toggleMenu">
       <span></span>
       <span></span>
       <span></span>
@@ -59,7 +65,7 @@ onUnmounted(() => {
     <RouterView />
   </main>
   <footer>
-    <p>footerテキストfooterテキストfooterテキストfooterテキストfooterテキスト</p>
+    <p>Kei Tsukamoto Portfolio</p>
   </footer>
 </template>
 
@@ -88,6 +94,7 @@ body {
   overflow-x: hidden;
   line-height: 1.2;
   list-style: none;
+  color: $gray;
 }
 
 /////////////////////////////////////
@@ -134,15 +141,39 @@ transition: height 1s ease;
     background 0.3s,
     box-shadow 0.3s;
 
+  &.subpage {
+    color: black;
+  }
+
   &__list {
     display: flex;
     justify-content: space-around;
     width: 40%;
     margin-left: auto;
+
+     &.is-open {
+      display: flex;
+      color: black;
+      width: 100vw;
+      height: 100vh;
+      text-align: center;
+      // メニューの表示スタイル
+    }
+
     @include sp {
       display: none;
-    }
+      flex-direction: column;
+      position: absolute;
+      top: 52px;
+      right: 0;
+      background: white;
+      width: 100%;
+      text-align: right;
+      padding: 16px 32px;
+      gap: 20px;
+      z-index: 10;
   }
+}
 
  &__item {
   position: relative;
@@ -164,7 +195,6 @@ transition: height 1s ease;
     width: 100%;
   }
 }
-
 
   &__logo {
     font-size: 1.7rem;

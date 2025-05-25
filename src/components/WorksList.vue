@@ -107,6 +107,9 @@ const works = [
     /* box-shadow: 2px 2px 2px 2px rgba(161, 161, 161, 0.35);
     background-color: rgb(245, 245, 245); */
   }
+  &__title {
+    font-weight: bold;
+  }
 }
 
 </style>

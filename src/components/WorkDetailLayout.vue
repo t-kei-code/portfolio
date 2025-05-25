@@ -110,9 +110,9 @@ const baseURL = import.meta.env.BASE_URL
     li {
       display: flex;
       justify-content: space-between;
-      margin-bottom: 64px;
+      margin-bottom: 48px;
       @include sp {
-        margin-bottom: 54px;
+        margin-bottom: 36px;
         display: block;
       }
     }
@@ -137,5 +137,7 @@ const baseURL = import.meta.env.BASE_URL
   margin: 0 auto 50px;
   display: block;
   padding: 10px;
+  border: solid $brown 1px;
+  border-radius: 8px;
 }
 </style>
