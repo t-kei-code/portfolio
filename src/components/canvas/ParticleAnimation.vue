@@ -65,13 +65,6 @@ function onResize() {
   else groupScale = 1.6
   group.scale.set(groupScale, groupScale, groupScale)
 
-
-  // const canvas = renderer.domElement
-  // canvas.style.width = width + 'px'
-  // canvas.style.height = height + 'px'
-  // canvas.style.maxWidth = '100%'
-  // canvas.style.display = 'block'
-
   // パーティクル頂点をスケールに応じて再構成
   if (modelA && modelB && modelC && geometry) {
     positionA = extractPosition(modelA)
@@ -252,6 +245,10 @@ onUnmounted(() => {
     position: absolute;
     top: 0;
     left: 0;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    display: block;
   }
   .about-btn {
   position: absolute;
