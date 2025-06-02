@@ -105,7 +105,7 @@ onMounted(() => {
 
   loader3d = new GLTFLoader()
 
-  loader3d.load('hourglass8.glb', (glb) => {
+  loader3d.load('gear.glb', (glb) => {
     modelA = glb.scene
     positionA = extractPosition(modelA, 1)
     checkAndCreateParticles()
@@ -117,7 +117,7 @@ onMounted(() => {
     checkAndCreateParticles()
   })
 
-  loader3d.load('box7.glb', (glb) => {
+  loader3d.load('gear.glb', (glb) => {
     modelC = glb.scene
     positionC = extractPosition(modelC, 1)
     checkAndCreateParticles()
