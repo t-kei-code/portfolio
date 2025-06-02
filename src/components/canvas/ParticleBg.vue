@@ -19,13 +19,6 @@ function onResize() {
 
   renderer.setSize(width, height)
   renderer.setPixelRatio(dpr)
-
-  const canvas = renderer.domElement
-  canvas.style.width = width + 'px'
-  canvas.style.height = height + 'px'
- 
-  canvas.style.maxWidth = '100%'; // ← これも重要（オーバーサイズ対策）
-  canvas.style.display = 'block'; // ← ブラウザによってはこれがないと効かない
 }
 
 onMounted(() => {
@@ -130,6 +123,8 @@ canvas {
   position: absolute;
   top: 0;
   left: 0;
+  width: 100vw;
+  height: 100vh;
   background: linear-gradient(
     90deg,
     rgba(131, 131, 131, 1),
