@@ -13,8 +13,15 @@ const handleScroll = () => {
   isScrolled.value = window.scrollY > window.innerHeight
 }
 
+//loading
+const isLoading = ref(true)
+
 onMounted(() => {
   window.addEventListener('scroll', handleScroll)
+
+  setTimeout(()=> {
+    isLoading.value = false
+  }, 2000)
 })
 
 onUnmounted(() => {
@@ -29,17 +36,21 @@ const toggleMenu = () => {
 </script>
 
 <template>
+  <div class="loading" v-if="isLoading">
+    <iframe src="https://lottie.host/embed/edfa3aa4-0d8c-463c-a101-bdc7defbbeed/szwqbN7QJO.lottie"></iframe>
+    <p class="loading__text">Loading...</p>
+  </div>
   <div class="canvas" :class="{ 'is-about' : route.name === 'about'}" v-if="route.name !== 'works'">
-      <ParticleBg ></ParticleBg>
-      <WaveAnimation></WaveAnimation>
-      <ParticleAnimation v-if="route.name ==='home'"></ParticleAnimation>
-      <AboutAnimation v-if="route.name ==='about'"></AboutAnimation>
+    <ParticleBg ></ParticleBg>
+    <WaveAnimation></WaveAnimation>
+    <ParticleAnimation v-if="route.name ==='home'"></ParticleAnimation>
+    <AboutAnimation v-if="route.name ==='about'"></AboutAnimation>
 
 
-      <div class="canvas__title">
-        <p v-if="route.name === 'home'">Kei Tsukamoto<br />Portfolio</p>
-        <p v-else-if="route.name === 'about'">ABOUT</p>
-      </div>
+    <div class="canvas__title">
+      <p v-if="route.name === 'home'">Kei Tsukamoto<br />Portfolio</p>
+      <p v-else-if="route.name === 'about'">ABOUT</p>
+    </div>
   </div>
 
   <header :class="{ on: isScrolled , 'subpage' : route.name !== 'home'}" class="header">
@@ -98,6 +109,27 @@ body {
 }
 
 /////////////////////////////////////
+.loading {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+
+  &__text {
+    font-size: 1.5rem;
+    animation: fade 1.2s ease-in-out infinite;
+  }
+}
+@keyframes fade {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+
 .canvas {
 height: 100vh;
 position: relative;
