@@ -90,6 +90,7 @@ const baseURL = import.meta.env.BASE_URL
   max-width: 1100px;
   @include sp {
     display: block;
+      margin: 40px auto 0;
   }
 
   .box--side {

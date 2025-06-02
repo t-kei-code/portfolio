@@ -151,27 +151,35 @@ transition: height 1s ease;
     width: 40%;
     margin-left: auto;
 
-     &.is-open {
-      display: flex;
-      color: black;
-      width: 100vw;
-      height: 100vh;
-      text-align: center;
-      // メニューの表示スタイル
-    }
-
     @include sp {
       display: none;
+      opacity: 0;
+      transform: translateY(-20px);
+      transition: opacity 0.4s ease, translate 0.4s ease;
+
       flex-direction: column;
       position: absolute;
-      top: 52px;
-      right: 0;
       background: white;
       width: 100%;
+      height: 100vh;
       text-align: right;
       padding: 16px 32px;
       gap: 20px;
       z-index: 10;
+  }
+
+    &.is-open {
+    opacity: 1;
+    transform: translateY(0);
+    z-index: 12;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    // width: 100vw;
+    // height: 100vh;
+    text-align: center;
   }
 }
 
@@ -199,23 +207,28 @@ transition: height 1s ease;
   &__logo {
     font-size: 1.7rem;
     padding-left: 30px;
+    position: relative;
+    z-index: 11;
   }
 
   //メニューボタン//
   &__btn {
     display: none;
-    z-index: 20;
+
+     width: 56px;
+    height: 52px;
+    background-color: rgba(255, 255, 255, 0.3);
+    position: absolute;
+    top: 0;
+    right: 0;
+    pointer-events: auto;
+    z-index: 999;
 
     @include sp {
       display: block;
-      width: 56px;
-      height: 52px;
-      background-color: rgba(255, 255, 255, 0.3);
-      position: absolute;
-      top: 0;
-      right: 0;
-      z-index: 20;
-      pointer-events: auto;
+
+      background: rgba(31, 27, 27, 0.4); // 見えやすく
+      border: 1px solid rgb(255, 255, 255);
 
       span {
         display: block;

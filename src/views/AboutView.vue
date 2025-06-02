@@ -105,11 +105,14 @@ section {
   color: #7b6758;
   margin-bottom: 30px;
   text-align: left;
-
   border-bottom: solid #7b6758 1px;
-}
-.section__title--en {
+
+  &--en {
   font-size: 0.8rem;
+  }
+  &--jp {
+    padding-bottom: 4px;
+  }
 }
 
 #about {

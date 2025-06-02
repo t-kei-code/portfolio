@@ -39,7 +39,7 @@ import WorksList from '@/components/WorksList.vue'
         <li class="lead__item">
           <p class="lead__item-title"> コーディング</p>
           <p class="lead__item-text">デザインカンプに忠実なマークアップが可能です。レスポンシブ対応やBEM設計にも対応します。</p>
-          <p class="lead__item-skill">HTML / CSS(SCSS) / Javascript / jQuery / <br>(学習中：WordPress / Vue.js)</p>
+          <p class="lead__item-skill">HTML / SCSS / Javascript / jQuery / WordPress / Vue.js /</p>
         </li>
         <li class="lead__item">
           <p class="lead__item-title"> デザイン</p>
@@ -48,7 +48,7 @@ import WorksList from '@/components/WorksList.vue'
         </li>
         <li class="lead__item">
           <p class="lead__item-title"> インタラクション・3D表現</p>
-          <p class="lead__item-text">JavaScript や Three.js を用いたアニメーション・WebGL表現の実装経験があります。3Dモデルの表示やアニメーション表現をポートフォリオサイト内で試しています。</p>
+          <p class="lead__item-text">JavaScript や Three.js を用いたアニメーション・WebGL表現を学習しています。3Dモデルの表示やアニメーション表現をポートフォリオサイト内で試しています。</p>
           <p class="lead__item-skill">Three.js / GSAP / Blender</p>
         </li>
       </ul>
@@ -102,12 +102,16 @@ section {
   color: #7b6758;
   margin-bottom: 30px;
   text-align: left;
-
   border-bottom: solid #7b6758 1px;
-}
-.section__title--en {
+
+  &--en {
   font-size: 0.8rem;
+  }
+  &--jp {
+    padding-bottom: 4px;
+  }
 }
+
 
 /* ////section__about//// */
 #about {
@@ -186,10 +190,11 @@ section {
     width: 33.3%;
     border: solid 1px #787069;
     border-radius: 10px;
-    padding: 10px;
+    padding: 20px 10px;
     @include sp {
       width: 100%;
       margin-bottom: 30px;
+       padding: 20px 10%;
     }
     &-title {
       font-weight: bold;

@@ -41,6 +41,9 @@ const SelectedComponent = works[workId]
 .container {
   background-color: rgb(235, 232, 232);
   padding: 100px 5%;
+  @include sp {
+    padding: 100px 5% 40px;
+  }
 }
 
 .section__title {
