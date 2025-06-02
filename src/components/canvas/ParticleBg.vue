@@ -82,6 +82,10 @@ onMounted(() => {
 
   animate()
   window.addEventListener('resize', onResize)
+
+  requestAnimationFrame(() => {
+    onResize()
+  })
 })
 
 onUnmounted(() => {

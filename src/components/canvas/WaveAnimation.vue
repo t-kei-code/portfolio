@@ -44,6 +44,8 @@ onMounted(() => {
 
   ctx = canvas.getContext('2d')
 
+  handleResize()
+
   // キャンバスのサイズを設定
   canvas.width = window.innerWidth
   canvas.height = window.innerHeight

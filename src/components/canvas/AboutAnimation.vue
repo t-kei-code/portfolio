@@ -91,6 +91,10 @@ onMounted(()=> {
     renderer.render(scene, camera)
   }
   animate();
+
+  requestAnimationFrame(() => {
+    onResize()
+  })
 })
 
 onUnmounted(() => {
