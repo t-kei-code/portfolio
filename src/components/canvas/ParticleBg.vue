@@ -125,10 +125,7 @@ onUnmounted(() => {
 <style scoped>
 canvas {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
+  inset: 0;
   background: linear-gradient(
     90deg,
     rgba(131, 131, 131, 1),
