@@ -135,7 +135,7 @@ canvas {
     rgba(92, 90, 90, 1) 53%,
     rgba(60, 54, 54, 1)
   );
-  background: linear-gradient(to bottom, hsl(180, 4%, 40%), hsl(240, 12%, 51%), hsl(226, 60%, 7%));
+  background: linear-gradient(to bottom, hsl(180, 5%, 42%), hsl(240, 9%, 25%), hsl(226, 60%, 7%));
   background-size: 400% 400%;
   animation: AnimationName 10s ease infinite;
 }

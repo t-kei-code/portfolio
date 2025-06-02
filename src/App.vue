@@ -53,7 +53,7 @@ const toggleMenu = () => {
       <p v-else-if="route.name === 'about'">ABOUT</p>
     </div>
 
-    <div class="canvas__scroll-icon"></div>
+    <div class="canvas__scroll-icon">scroll</div>
   </div>
 
   <header :class="{ on: isScrolled , 'subpage' : route.name !== 'home'}" class="header">
@@ -160,32 +160,24 @@ transition: height 1s ease;
 
   ///////
   &__scroll-icon {
-        font-size: 10px;
+        font-size: 12px;
         font-weight: bold;
+        color: rgba(255, 255, 255,0.8);
 
         position: absolute;
-        bottom: -56px;
-        left: 1.5%;
+        bottom: 0;
+        left: 50%;
         text-align: center;
-
-        @include tab {
-            bottom: 0px;
-            left: 5.1%;
-        }
 
             &::after {
             content: "";
             display: block;
             width: 1px;
-            height: 112px;
-            background-color: steelblue;
+            height: 60px;
+            background-color: rgb(255, 255, 255);
             margin: 8px auto 0;
             animation: scrollLine 1.6s ease-in-out infinite;
             transform-origin: top;
-
-            @include tab {
-                height: 52px;
-            }
         }
 
         @keyframes scrollLine {
