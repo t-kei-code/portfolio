@@ -115,8 +115,7 @@ onUnmounted(() => {
 <style scoped lang="scss">
   canvas {
     position: absolute;
-    top: 0;
-    left: 0;
+    inset: 0;
   }
 
 </style>

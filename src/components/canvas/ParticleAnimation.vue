@@ -30,7 +30,7 @@ function extractPosition(model, scale = 1) {
     if (child instanceof THREE.Mesh) {
       const positionAttribute = child.geometry.attributes.position
 
-      console.log('名前:', child.name || '(名前なし)', '頂点数:',  positionAttribute.count)////
+      // console.log('名前:', child.name || '(名前なし)', '頂点数:',  positionAttribute.count)////
 
       const tempVec = new THREE.Vector3()
 
@@ -64,7 +64,7 @@ function onResize() {
 
   let groupScale = 1.0
   if (width < 768) groupScale = 0.8
-  else if (width < 1024) groupScale = 1
+  else if (width < 1440) groupScale = 1
   else groupScale = 1.6
   group.scale.set(groupScale, groupScale, groupScale)
 

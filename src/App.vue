@@ -135,6 +135,7 @@ body {
 
 .canvas {
 height: 100vh;
+width: 100%;
 position: relative;
 overflow: hidden;
 transition: height 1s ease;
