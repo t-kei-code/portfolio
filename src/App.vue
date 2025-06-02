@@ -19,9 +19,10 @@ const isLoading = ref(true)
 onMounted(() => {
   window.addEventListener('scroll', handleScroll)
 
+  //loading
   setTimeout(()=> {
     isLoading.value = false
-  }, 2000)
+  }, 3000)
 })
 
 onUnmounted(() => {
@@ -37,7 +38,7 @@ const toggleMenu = () => {
 
 <template>
   <div class="loading" v-if="isLoading">
-    <iframe src="https://lottie.host/embed/edfa3aa4-0d8c-463c-a101-bdc7defbbeed/szwqbN7QJO.lottie"></iframe>
+  <dotlottie-player src="https://lottie.host/edfa3aa4-0d8c-463c-a101-bdc7defbbeed/szwqbN7QJO.lottie" background="transparent" speed="1" style="width: 300px; height: 300px" loop autoplay></dotlottie-player>
     <p class="loading__text">Loading...</p>
   </div>
   <div class="canvas" :class="{ 'is-about' : route.name === 'about'}" v-if="route.name !== 'works'">
@@ -51,6 +52,8 @@ const toggleMenu = () => {
       <p v-if="route.name === 'home'">Kei Tsukamoto<br />Portfolio</p>
       <p v-else-if="route.name === 'about'">ABOUT</p>
     </div>
+
+    <div class="canvas__scroll-icon"></div>
   </div>
 
   <header :class="{ on: isScrolled , 'subpage' : route.name !== 'home'}" class="header">
@@ -154,6 +157,52 @@ transition: height 1s ease;
       left: 35%;
     }
   }
+
+  ///////
+  &__scroll-icon {
+        font-size: 10px;
+        font-weight: bold;
+
+        position: absolute;
+        bottom: -56px;
+        left: 1.5%;
+        text-align: center;
+
+        @include tab {
+            bottom: 0px;
+            left: 5.1%;
+        }
+
+            &::after {
+            content: "";
+            display: block;
+            width: 1px;
+            height: 112px;
+            background-color: steelblue;
+            margin: 8px auto 0;
+            animation: scrollLine 1.6s ease-in-out infinite;
+            transform-origin: top;
+
+            @include tab {
+                height: 52px;
+            }
+        }
+
+        @keyframes scrollLine {
+            0% {
+            transform: scaleY(1);
+            opacity: 1;
+            }
+            50% {
+            transform: scaleY(0.5);
+            opacity: 0.4;
+            }
+            100% {
+            transform: scaleY(1);
+            opacity: 1;
+            }
+        }
+    }
 }
 
 

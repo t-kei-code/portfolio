@@ -51,7 +51,7 @@ function onResize() {
 
   const width = window.innerWidth
   const height = window.innerHeight
-  const dpr = window.devicePixelRatio || 1
+  const dpr = Math.min(window.devicePixelRatio || 1, 2)
 
   camera.aspect = width / height
   camera.updateProjectionMatrix()
@@ -66,11 +66,11 @@ function onResize() {
   group.scale.set(groupScale, groupScale, groupScale)
 
 
-  const canvas = renderer.domElement
-  canvas.style.width = width + 'px'
-  canvas.style.height = height + 'px'
-  canvas.style.maxWidth = '100%'
-  canvas.style.display = 'block'
+  // const canvas = renderer.domElement
+  // canvas.style.width = width + 'px'
+  // canvas.style.height = height + 'px'
+  // canvas.style.maxWidth = '100%'
+  // canvas.style.display = 'block'
 
   // パーティクル頂点をスケールに応じて再構成
   if (modelA && modelB && modelC && geometry) {
