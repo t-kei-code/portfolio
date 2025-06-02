@@ -219,6 +219,10 @@ onMounted(() => {
 
   window.addEventListener('resize', onResize)
   animate()
+
+  requestAnimationFrame(() => {
+    onResize()
+  })
 })
 
 //aboutページに遷移時fadeout
