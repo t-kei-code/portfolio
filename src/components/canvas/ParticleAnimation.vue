@@ -16,8 +16,6 @@ const clock = new THREE.Clock()
 const opacity = ref(1)
 const isMobile = window.innerWidth < 768
 
-let resizeTimeout = null
-
 function extractPosition(model, scale = 1) {
   model.updateMatrixWorld(true)
   let positions = []
@@ -49,16 +47,16 @@ function onResize() {
   const scale = width < 768 ? 0.8 : width < 1440 ? 1.0 : 1.4
   group.scale.set(scale, scale, scale)
 
-  if (positionA && positionB && positionC && geometry) {
+  if (modelA && modelB && modelC && geometry) {
+    positionA = extractPosition(modelA)
+    positionB = extractPosition(modelB)
+    positionC = extractPosition(modelC)
+
     geometry.setAttribute('position', new THREE.Float32BufferAttribute(positionA, 3))
     geometry.setAttribute('modelAPosition', new THREE.Float32BufferAttribute(positionA, 3))
     geometry.setAttribute('modelBPosition', new THREE.Float32BufferAttribute(positionB, 3))
     geometry.setAttribute('modelCPosition', new THREE.Float32BufferAttribute(positionC, 3))
   }
-
-  requestAnimationFrame(() => {
-    renderer.render(scene, camera)
-  })
 }
 
 onMounted(() => {
@@ -79,6 +77,7 @@ onMounted(() => {
   scene.add(group)
 
   loader3d = new GLTFLoader()
+
   loader3d.load('gear3.glb', (glb) => {
     modelA = glb.scene
     positionA = extractPosition(modelA, 1)
@@ -93,7 +92,7 @@ onMounted(() => {
 
   loader3d.load('box04.glb', (glb) => {
     modelC = glb.scene
-    positionC = isMobile ? positionB : extractPosition(modelC, 1) // モバイル時は modelB を再利用
+    positionC = isMobile ? positionA : extractPosition(modelC, 1)
     checkAndCreateParticles()
   })
 
@@ -174,14 +173,7 @@ onMounted(() => {
   }
 
   animate()
-
-  window.addEventListener('resize', () => {
-    clearTimeout(resizeTimeout)
-    resizeTimeout = setTimeout(() => {
-      onResize()
-    }, 200)
-  })
-
+  window.addEventListener('resize', onResize)
   requestAnimationFrame(() => onResize())
 })
 
@@ -207,10 +199,8 @@ onUnmounted(() => {
 
 <style scoped>
 .mainCanvas {
-  position: fixed;
+  position: absolute;
   inset: 0;
-  width: 100vw;
-  height: 100vh;
   display: block;
 }
 </style>
