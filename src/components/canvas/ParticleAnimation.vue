@@ -6,11 +6,10 @@ import gsap from 'gsap'
 import router from '@/router'
 
 const canvasRef = ref(null)
-
 let modelA, positionA, modelB, positionB, modelC, positionC
 let material, geometry, particles
 let group, scene, renderer, camera, light, loader3d, animationId
-let gsapTimeline
+let gsapTimeline, resizeTimeout
 let isMounted = true
 const clock = new THREE.Clock()
 const opacity = ref(1)
@@ -47,16 +46,22 @@ function onResize() {
   const scale = width < 768 ? 0.8 : width < 1440 ? 1.0 : 1.4
   group.scale.set(scale, scale, scale)
 
-  if (modelA && modelB && modelC && geometry) {
-    positionA = extractPosition(modelA)
-    positionB = extractPosition(modelB)
-    positionC = extractPosition(modelC)
-
+  if (
+    geometry &&
+    positionA?.length &&
+    positionB?.length &&
+    positionC?.length
+  ) {
     geometry.setAttribute('position', new THREE.Float32BufferAttribute(positionA, 3))
     geometry.setAttribute('modelAPosition', new THREE.Float32BufferAttribute(positionA, 3))
     geometry.setAttribute('modelBPosition', new THREE.Float32BufferAttribute(positionB, 3))
     geometry.setAttribute('modelCPosition', new THREE.Float32BufferAttribute(positionC, 3))
   }
+}
+
+function handleResize() {
+  clearTimeout(resizeTimeout)
+  resizeTimeout = setTimeout(onResize, 200)
 }
 
 onMounted(() => {
@@ -97,9 +102,7 @@ onMounted(() => {
   })
 
   function checkAndCreateParticles() {
-    if (positionA && positionB && positionC) {
-      createParticle()
-    }
+    if (positionA && positionB && positionC) createParticle()
   }
 
   function createParticle() {
@@ -173,7 +176,7 @@ onMounted(() => {
   }
 
   animate()
-  window.addEventListener('resize', onResize)
+  window.addEventListener('resize', handleResize)
   requestAnimationFrame(() => onResize())
 })
 
@@ -189,7 +192,7 @@ onUnmounted(() => {
   isMounted = false
   cancelAnimationFrame(animationId)
   gsapTimeline?.kill()
-  window.removeEventListener('resize', onResize)
+  window.removeEventListener('resize', handleResize)
 })
 </script>
 
