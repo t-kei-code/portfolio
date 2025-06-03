@@ -3,6 +3,10 @@ import WorksList from '@/components/WorksList.vue'
 </script>
 
 <template>
+  <section class="tentative">
+    ※パフォーマンスの問題や、スマホ表示時の表示問題があり、現在も更新作業中です。
+  </section>
+
   <section id="about" class="about">
     <h2 class="section__title">
       <p class="section__title--en">About</p>
@@ -56,12 +60,14 @@ import WorksList from '@/components/WorksList.vue'
   </section>
 
   <section id="works" class="works">
-    <h2 class="section__title">
-      <p class="section__title--en">Works</p>
-      <p class="section__title--jp">制作物</p>
-    </h2>
-    <div class="works__container">
-      <WorksList></WorksList>
+    <div class="works__inner">
+      <h2 class="section__title">
+        <p class="section__title--en">Works</p>
+        <p class="section__title--jp">制作物</p>
+      </h2>
+      <div class="works__container">
+        <WorksList></WorksList>
+      </div>
     </div>
   </section>
 </template>
@@ -90,12 +96,6 @@ import WorksList from '@/components/WorksList.vue'
 }
 
 /* section */
-section {
-  padding: 0 5%;
-  max-width: 1400px;
-  margin: 0 auto;
-}
-
 .section__title {
   font-weight: bold;
   font-size: 1.5rem;
@@ -112,10 +112,21 @@ section {
   }
 }
 
+.tentative {
+   margin-top: 30px;
+  padding: 0 5%;
+  max-width: 1400px;
+  margin: 30px auto 0;
+  text-align: center;
+}
+
 
 /* ////section__about//// */
 #about {
   margin-top: 30px;
+  padding: 0 5%;
+  max-width: 1400px;
+  margin: 30px auto 0;
 }
 
 .about__container {
@@ -171,7 +182,9 @@ section {
 
 /*//////////////// section__lead ///////////////////*/
 .lead {
-  margin-top: 30px;
+  padding: 0 5%;
+  max-width: 1400px;
+  margin: 30px auto 0;
   &__container {
   max-width: 800px;
   margin: 50px auto;
@@ -234,10 +247,15 @@ section {
 }
 
 /* section__work*/
-#works {
+.works {
   padding-top: 30px;
   padding-bottom: 30px;
   background-color: rgb(235, 232, 232);
+  &__inner {
+    padding: 0 5%;
+    max-width: 1400px;
+    margin: 30px auto 0;
+  }
 }
 
 .works__container {

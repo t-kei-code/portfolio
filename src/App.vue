@@ -69,7 +69,7 @@ const toggleMenu = () => {
   <header :class="{ on: isScrolled , 'subpage' : route.name !== 'home'}" class="header">
     <ul>
       <li class="header__item header__logo">
-        <RouterLink to="/">Kei Tsukamoto</RouterLink>
+        <!-- <RouterLink to="/">Kei Tsukamoto</RouterLink> -->
       </li>
     </ul>
 

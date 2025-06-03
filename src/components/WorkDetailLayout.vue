@@ -17,6 +17,7 @@ const baseURL = import.meta.env.BASE_URL
     <p class="work__category">{{ category }}</p>
     <h3 class="work__title">{{ title }}</h3>
     <a class="work__url" :href="url" target="_blank">{{ url }}</a>
+    <slot name="afterUrl"></slot>
     <img class="work__img" :src="baseURL + image" :alt="title" />
 
     <div class="content__box">

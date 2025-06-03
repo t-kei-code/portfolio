@@ -27,6 +27,13 @@ const workData = {
         <p>SCSSファイルをページや共通パーツごとに分割し、管理や再利用しやすい設計に</p>
       </div>
     </template>
+
+    <template #afterUrl>
+      <p class="afterURL">
+        ユーザー名: demo<br>
+        パスワード: demo-01
+      </p>
+    </template>
   </WorkDetailLayout>
 </template>
 
@@ -52,5 +59,9 @@ const workData = {
         width: 100%;
       }
     }
+  }
+
+  .afterURL {
+    transform: translateY(-20px);
   }
 </style>
