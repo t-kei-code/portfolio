@@ -84,7 +84,7 @@ onMounted(() => {
     checkAndCreateParticles()
   })
 
-  loader3d.load('hourglass05.glb', (glb) => {
+  loader3d.load('hourglass06.glb', (glb) => {
     modelB = glb.scene
     positionB = extractPosition(modelB, 1)
     checkAndCreateParticles()
