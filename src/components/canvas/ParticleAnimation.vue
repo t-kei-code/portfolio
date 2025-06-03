@@ -203,6 +203,5 @@ onUnmounted(() => {
   width: 100vw;
   height: 100vh;
   display: block;
-  touch-action: none;
 }
 </style>
