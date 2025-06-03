@@ -12,81 +12,50 @@ let material, geometry, particles
 let group, scene, renderer, camera, light, loader3d, animationId
 let gsapTimeline
 let isMounted = true
-const clock = new THREE.Clock() //  経過時間管理用
-const opacity = ref(1); //画面遷移アニメーション用
+const clock = new THREE.Clock()
+const opacity = ref(1)
+const isMobile = window.innerWidth < 768
 
 function extractPosition(model, scale = 1) {
-  const w = window.innerWidth
-  const isMobile = w < 768 // スマホ判定
-
-  if (scale === undefined) {
-    if (w < 768) scale = 0.5
-    else if (w < 1024) scale = 0.8
-    else scale = 1.0
-  }
-
   model.updateMatrixWorld(true)
-
   let positions = []
   model.traverse((child) => {
     if (child instanceof THREE.Mesh) {
-      const positionAttribute = child.geometry.attributes.position
-
-      console.log('名前:', child.name || '(名前なし)', '頂点数:', positionAttribute.count)
-
+      const attr = child.geometry.attributes.position
       const tempVec = new THREE.Vector3()
-      const step = isMobile ? 4 : 1 // ← スマホなら4分の1間引き
-
-      for (let i = 0; i < positionAttribute.count; i += step) {
-        tempVec.set(
-          positionAttribute.getX(i) * scale,
-          positionAttribute.getY(i) * scale,
-          positionAttribute.getZ(i) * scale
-        )
+      for (let i = 0; i < attr.count; i++) {
+        tempVec.set(attr.getX(i) * scale, attr.getY(i) * scale, attr.getZ(i) * scale)
         tempVec.applyMatrix4(child.matrixWorld)
         positions.push(tempVec.x, tempVec.y, tempVec.z)
       }
     }
   })
-
   return positions
 }
 
-
-
 function onResize() {
   if (!camera || !renderer || !canvasRef.value) return
-
   const width = window.innerWidth
   const height = window.innerHeight
   const dpr = Math.min(window.devicePixelRatio || 1, 2)
 
   camera.aspect = width / height
   camera.updateProjectionMatrix()
-
   renderer.setSize(width, height)
   renderer.setPixelRatio(dpr)
 
-  let groupScale = 1.0
-  if (width < 768) groupScale = 0.8
-  else if (width < 1440) groupScale = 1
-  else groupScale = 1.4
-  group.scale.set(groupScale, groupScale, groupScale)
+  const scale = width < 768 ? 0.8 : width < 1440 ? 1.0 : 1.4
+  group.scale.set(scale, scale, scale)
 
-  // パーティクル頂点をスケールに応じて再構成
   if (modelA && modelB && modelC && geometry) {
     positionA = extractPosition(modelA)
     positionB = extractPosition(modelB)
     positionC = extractPosition(modelC)
 
-    const modelAPosition = new Float32Array(positionA)
-    const modelBPosition = new Float32Array(positionB)
-    const modelCPosition = new Float32Array(positionC)
-
-    geometry.setAttribute('position', new THREE.Float32BufferAttribute(modelAPosition, 3))
-    geometry.setAttribute('modelAPosition', new THREE.Float32BufferAttribute(modelAPosition, 3))
-    geometry.setAttribute('modelBPosition', new THREE.Float32BufferAttribute(modelBPosition, 3))
-    geometry.setAttribute('modelCPosition', new THREE.Float32BufferAttribute(modelCPosition, 3))
+    geometry.setAttribute('position', new THREE.Float32BufferAttribute(positionA, 3))
+    geometry.setAttribute('modelAPosition', new THREE.Float32BufferAttribute(positionA, 3))
+    geometry.setAttribute('modelBPosition', new THREE.Float32BufferAttribute(positionB, 3))
+    geometry.setAttribute('modelCPosition', new THREE.Float32BufferAttribute(positionC, 3))
   }
 }
 
@@ -94,11 +63,7 @@ onMounted(() => {
   if (!canvasRef.value) return
 
   scene = new THREE.Scene()
-  renderer = new THREE.WebGLRenderer({
-    canvas: canvasRef.value,
-    antialias: true,
-    alpha: true,
-  })
+  renderer = new THREE.WebGLRenderer({ canvas: canvasRef.value, alpha: true, antialias: true })
   renderer.setSize(window.innerWidth, window.innerHeight)
 
   camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
@@ -127,7 +92,7 @@ onMounted(() => {
 
   loader3d.load('box04.glb', (glb) => {
     modelC = glb.scene
-    positionC = extractPosition(modelC, 1)
+    positionC = isMobile ? positionA : extractPosition(modelC, 1)
     checkAndCreateParticles()
   })
 
@@ -138,17 +103,11 @@ onMounted(() => {
   }
 
   function createParticle() {
-    if (!positionA || !positionB || !positionC) return
-
-    const modelAPosition = new Float32Array(positionA)
-    const modelBPosition = new Float32Array(positionB)
-    const modelCPosition = new Float32Array(positionC)
-
     geometry = new THREE.BufferGeometry()
-    geometry.setAttribute('position', new THREE.Float32BufferAttribute(modelAPosition, 3))
-    geometry.setAttribute('modelAPosition', new THREE.Float32BufferAttribute(modelAPosition, 3))
-    geometry.setAttribute('modelBPosition', new THREE.Float32BufferAttribute(modelBPosition, 3))
-    geometry.setAttribute('modelCPosition', new THREE.Float32BufferAttribute(modelCPosition, 3))
+    geometry.setAttribute('position', new THREE.Float32BufferAttribute(positionA, 3))
+    geometry.setAttribute('modelAPosition', new THREE.Float32BufferAttribute(positionA, 3))
+    geometry.setAttribute('modelBPosition', new THREE.Float32BufferAttribute(positionB, 3))
+    geometry.setAttribute('modelCPosition', new THREE.Float32BufferAttribute(positionC, 3))
 
     material = new THREE.ShaderMaterial({
       uniforms: {
@@ -161,31 +120,29 @@ onMounted(() => {
         attribute vec3 modelAPosition;
         attribute vec3 modelBPosition;
         attribute vec3 modelCPosition;
-        vec3 morphed;
-
         void main() {
-            if (uMorph < 1.0) {
-                morphed = mix(modelAPosition, modelBPosition, uMorph);
-            } else if (uMorph < 2.0) {
-                morphed = mix(modelBPosition, modelCPosition, uMorph - 1.0);
-            } else {
-                morphed = mix(modelCPosition, modelAPosition, uMorph - 2.0);
-            }
-            gl_Position = projectionMatrix * modelViewMatrix * vec4(morphed, 1.0);
-            gl_PointSize = 2.0;
+          vec3 morphed;
+          if (uMorph < 1.0) {
+            morphed = mix(modelAPosition, modelBPosition, uMorph);
+          } else if (uMorph < 2.0) {
+            morphed = mix(modelBPosition, modelCPosition, uMorph - 1.0);
+          } else {
+            morphed = mix(modelCPosition, modelAPosition, uMorph - 2.0);
+          }
+          gl_Position = projectionMatrix * modelViewMatrix * vec4(morphed, 1.0);
+          gl_PointSize = 2.0;
         }
       `,
       fragmentShader: `
         uniform vec3 uColor;
         uniform float opacity;
         void main() {
-            gl_FragColor = vec4(uColor, opacity);
+          gl_FragColor = vec4(uColor, opacity);
         }
       `,
       transparent: true,
       depthWrite: false,
       blending: THREE.AdditiveBlending,
-      opacity: opacity.value,
     })
 
     particles = new THREE.Points(geometry, material)
@@ -196,14 +153,12 @@ onMounted(() => {
 
   function morphingAnimation() {
     if (!material || !material.uniforms.uMorph) return
-
-    gsapTimeline = gsap
-      .timeline({ repeat: -1 })
-      .to(material.uniforms.uMorph, { value: 1, duration: 2, ease: 'power2.inOut' })
+    gsapTimeline = gsap.timeline({ repeat: -1 })
+      .to(material.uniforms.uMorph, { value: 1, duration: 2 })
       .to(material.uniforms.uMorph, { value: 1, duration: 0, delay: 5 })
-      .to(material.uniforms.uMorph, { value: 2, duration: 2, ease: 'power2.inOut' })
+      .to(material.uniforms.uMorph, { value: 2, duration: 2 })
       .to(material.uniforms.uMorph, { value: 2, duration: 0, delay: 5 })
-      .to(material.uniforms.uMorph, { value: 3, duration: 2, ease: 'power2.inOut' })
+      .to(material.uniforms.uMorph, { value: 3, duration: 2 })
       .to(material.uniforms.uMorph, { value: 3, duration: 0, delay: 5 })
       .to(material.uniforms.uMorph, { value: 0, duration: 0 })
   }
@@ -211,33 +166,24 @@ onMounted(() => {
   function animate() {
     if (!isMounted) return
     requestAnimationFrame(animate)
-
-    const elapsedTime = clock.getElapsedTime() //  経過時間（秒）
-    group.rotation.y = elapsedTime * 0.5 //  FPS に依存せず一定速度
-
-    if (material) {
-     material.uniforms.opacity.value = opacity.value
-  }
-
+    const elapsedTime = clock.getElapsedTime()
+    group.rotation.y = elapsedTime * 0.5
+    if (material) material.uniforms.opacity.value = opacity.value
     renderer.render(scene, camera)
   }
 
-  window.addEventListener('resize', onResize)
   animate()
-
-  requestAnimationFrame(() => {
-    onResize()
-  })
+  window.addEventListener('resize', onResize)
+  requestAnimationFrame(() => onResize())
 })
 
-//aboutページに遷移時fadeout
- function gotoAbout() {
-    gsap.to(opacity, {
-      value: 0,
-      duration: 0.3,
-      onComplete: () => router.push("/about")
-    })
-  }
+function gotoAbout() {
+  gsap.to(opacity, {
+    value: 0,
+    duration: 0.3,
+    onComplete: () => router.push("/about")
+  })
+}
 
 onUnmounted(() => {
   isMounted = false
@@ -249,26 +195,12 @@ onUnmounted(() => {
 
 <template>
   <canvas class="mainCanvas" ref="canvasRef"></canvas>
-  <!-- <button class="about-btn" @click="gotoAbout">Aboutへ</button> -->
 </template>
 
 <style scoped>
-  .mainCanvas {
-    position: absolute;
-    inset: 0;
-    display: block;
-  }
-  .about-btn {
+.mainCanvas {
   position: absolute;
-  bottom: 40px;
-  right: 40px;
-  z-index: 10;
-  padding: 12px 24px;
-  background-color: white;
-  color: black;
-  border: none;
-  border-radius: 8px;
-  font-weight: bold;
-  cursor: pointer;
+  inset: 0;
+  display: block;
 }
 </style>

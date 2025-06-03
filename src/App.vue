@@ -229,6 +229,11 @@ body {
 
   &.subpage {
     color: black;
+     text-shadow:
+    -0.5px -0.5px rgb(255, 255, 255),
+     0.5px -0.5px rgb(255, 255, 255),
+    -0.5px  0.5px rgb(255, 255, 255),
+     0.5px  0.5px rgb(255, 255, 255);
   }
 
   &__list {
