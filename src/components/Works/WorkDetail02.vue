@@ -4,7 +4,7 @@ import WorkDetailLayout from '@/components/WorkDetailLayout.vue'
 const workData = {
   category: '個人製作',
   title: 'KEI TSUKAMOTO - ポートフォリオサイト',
-  url: 'im-t-kei-portfolio.netlify.app',
+  url: 'im-t-kei-portfolio.netlify.app/',
   image: 'portfolio.png',
   tasks: 'デザイン/コーディング/',
   tech: 'html, css(scss), javascript, vue.js, Three.js, gsap, blender',

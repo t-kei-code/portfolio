@@ -13,7 +13,7 @@ let gsapTimeline, resizeTimeout
 let isMounted = true
 const clock = new THREE.Clock()
 const opacity = ref(1)
-const isMobile = window.innerWidth < 768
+const isMobile = window.innerWidth <= 768
 
 function extractPosition(model, scale = 1) {
   model.updateMatrixWorld(true)
