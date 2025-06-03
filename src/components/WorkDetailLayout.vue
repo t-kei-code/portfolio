@@ -68,6 +68,7 @@ const baseURL = import.meta.env.BASE_URL
 .work__url {
   margin-bottom: 30px;
   display: inline-block;
+  border-bottom: solid $gray 1px;
 }
 
 .work__img {

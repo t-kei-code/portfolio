@@ -3,11 +3,11 @@ import WorkDetailLayout from '@/components/WorkDetailLayout.vue'
 
 const workData = {
   category: '課題',
-  title: '青牡丹工務店 コーポレートサイト',
-  url: 'https://im-t-kei.peewee.jp/aobotan/',
-  image: 'aobotan.png',
-  tasks: 'コーディング',
-  tech: 'HTML, SCSS,Javascript,Jquery',
+  title: 'イタリアンレストランSHU - LP',
+  // url: 'url',
+  image: 'food.png',
+  tasks: 'デザイン/',
+  tech: 'figma, illustrator ',
   duration: '20日',
 }
 </script>
@@ -15,54 +15,33 @@ const workData = {
 <template>
   <WorkDetailLayout v-bind="workData">
     <template #summary>
-      青牡丹工務店のコーディング
+      イタリアンダイニングSHU(架空)のホームページのデザインとコーディングを行いました。
     </template>
     <template #point>
-      <div class="point__box">
-        <img src="/public/image 35.png" alt="" srcset="">
-        <p>全体のSCSS設計はBEMに従い、保守性を意識しました。</p>
-      </div>
-      <div class="point__box">
-        <img src="/public/image 34.png" alt="" srcset="">
-        <p>SCSSファイルをページや共通パーツごとに分割し、管理や再利用しやすい設計に</p>
-      </div>
-      <div class="point__box">
-        <p>「お問い合わせ」フォームでは入力チェックを行い、必須項目がすべて入力されていないとsubmitボタンをクリックできないよう実装しました。</p>
-      </div>
-
-      <div>
-        <p>課題を通して、コーディングの正確さと効率が向上</p>
-        <ul>
-          <li>・品質チェックシートを用いた修正フローの確立</li>
-          <li>・よく使う処理やパーツのコードスニペット化</li>
-          <li>・ファイル構造のテンプレート化</li>
-        </ul>
-      </div>
+      <p>
+        オフィス街にある隠れ家的イタリアン。落ち着いていておしゃれ、気軽に行ける雰囲気を目指しました。
+      </p>
+      <p>コアターゲット：新卒入社のOL 気軽に先輩を誘える店が欲しいと思っている。</p>
     </template>
   </WorkDetailLayout>
+
+  <div class="img__container">
+    <img class="img--sp" src="/spサイズ.jpg" alt="" />
+    <img class="img--pc" src="/pcサイズ.jpg" alt="" />
+  </div>
 </template>
 
-<style lang="scss">
-@use "@/styles/mixin" as *;
-  .point__box {
-    display: flex;
-    gap: 30px;
-    align-items: center;
-    margin-bottom: 30px;
-    @include sp {
-      display: block;
-    }
-    img {
-      width: 40%;
-      @include sp {
-        width: 100%;
-      }
-    }
-    p {
-      width: 40%;
-      @include sp {
-        width: 100%;
-      }
-    }
-  }
+<style scoped>
+.img__container {
+  max-width: 1200px;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+.img--sp {
+  width: 20%;
+}
+.img--pc {
+  width: 50%;
+}
 </style>

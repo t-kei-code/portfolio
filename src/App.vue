@@ -9,6 +9,7 @@ import AboutAnimation from './components/canvas/AboutAnimation.vue'
 const route = useRoute()
 const isScrolled = ref(false) // スクロール状態を管理
 
+//header color変更用
 const handleScroll = () => {
   isScrolled.value = window.scrollY > window.innerHeight
 }
@@ -19,6 +20,7 @@ const isLoading = ref(true)
 onMounted(() => {
   window.addEventListener('scroll', handleScroll)
 
+  //スマホ表示時にアドレスバー除くため
   const setVh = () => {
   const vh = window.innerHeight * 0.01;
   document.documentElement.style.setProperty('--vh', `${vh}px`);

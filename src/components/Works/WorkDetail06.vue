@@ -3,45 +3,22 @@ import WorkDetailLayout from '@/components/WorkDetailLayout.vue'
 
 const workData = {
   category: '課題',
-  title: 'イタリアンレストランSHU - LP',
-  // url: 'url',
-  image: 'food.png',
-  tasks: 'デザイン/',
-  tech: 'figma, illustrator ',
-  duration: '20日',
+  title: 'SPORTHERE -LP',
+  url: 'https://cottleya.jobtra-itweb.com/SPORTHERE/',
+  image: 'sport.png',
+  tasks: 'コーディング/',
+  tech: 'html, css',
+  duration: '1週間',
 }
 </script>
 
 <template>
   <WorkDetailLayout v-bind="workData">
     <template #summary>
-      イタリアンダイニングSHU(架空)のホームページのデザインとコーディングを行いました。
+      スポーツ事業会社の自社アプリ「SPORTHERE」の紹介LPサイトコーディングを行いました。
     </template>
     <template #point>
-      <p>
-        オフィス街にある隠れ家的イタリアン。落ち着いていておしゃれ、気軽に行ける雰囲気を目指しました。
-      </p>
-      <p>コアターゲット：新卒入社のOL 気軽に先輩を誘える店が欲しいと思っている。</p>
+      全体のSCSS設計はBEMに従い、保守性を意識しました。
     </template>
   </WorkDetailLayout>
-
-  <div class="img__container">
-    <img class="img--sp" src="/spサイズ.jpg" alt="" />
-    <img class="img--pc" src="/pcサイズ.jpg" alt="" />
-  </div>
 </template>
-
-<style scoped>
-.img__container {
-  max-width: 1200px;
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-}
-.img--sp {
-  width: 20%;
-}
-.img--pc {
-  width: 50%;
-}
-</style>
