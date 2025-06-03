@@ -19,6 +19,14 @@ const isLoading = ref(true)
 onMounted(() => {
   window.addEventListener('scroll', handleScroll)
 
+  const setVh = () => {
+  const vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
+};
+
+setVh(); // 初回実行
+window.addEventListener('resize', setVh); // 画面回転やアドレスバー開閉でも更新
+
   //loading
   setTimeout(()=> {
     isLoading.value = false
