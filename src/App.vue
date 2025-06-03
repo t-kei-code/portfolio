@@ -132,16 +132,16 @@ body {
   50% { opacity: 0.5; }
 }
 
-
+///////
 .canvas {
-height: 100vh;
+height: calc(var(--vh, 1vh) * 100);
 width: 100%;
 position: relative;
 overflow: hidden;
 transition: height 1s ease;
 
 &.is-about {
-    height: 50vh;
+    height: calc(var(--vh, 1vh) * 50);
   }
 
   &__title {
@@ -161,12 +161,12 @@ transition: height 1s ease;
 
   ///////
   &__scroll-icon {
-        font-size: 12px;
+        font-size: clamp(0.75rem, 0.618rem + 0.56vw, 1.125rem);
         font-weight: bold;
         color: rgba(255, 255, 255,0.8);
 
         position: absolute;
-        bottom: 0;
+        bottom: 10px;
         left: 50%;
         text-align: center;
 
@@ -174,7 +174,7 @@ transition: height 1s ease;
             content: "";
             display: block;
             width: 1px;
-            height: 60px;
+            height: 55px;
             background-color: rgb(255, 255, 255);
             margin: 8px auto 0;
             animation: scrollLine 1.6s ease-in-out infinite;
