@@ -17,6 +17,8 @@ const opacity = ref(1); //画面遷移アニメーション用
 
 function extractPosition(model, scale = 1) {
   const w = window.innerWidth
+  const isMobile = w < 768 // スマホ判定
+
   if (scale === undefined) {
     if (w < 768) scale = 0.5
     else if (w < 1024) scale = 0.8
@@ -30,11 +32,12 @@ function extractPosition(model, scale = 1) {
     if (child instanceof THREE.Mesh) {
       const positionAttribute = child.geometry.attributes.position
 
-      console.log('名前:', child.name || '(名前なし)', '頂点数:',  positionAttribute.count)////
+      console.log('名前:', child.name || '(名前なし)', '頂点数:', positionAttribute.count)
 
       const tempVec = new THREE.Vector3()
+      const step = isMobile ? 4 : 1 // ← スマホなら4分の1間引き
 
-      for (let i = 0; i < positionAttribute.count; i++) {
+      for (let i = 0; i < positionAttribute.count; i += step) {
         tempVec.set(
           positionAttribute.getX(i) * scale,
           positionAttribute.getY(i) * scale,
@@ -45,8 +48,10 @@ function extractPosition(model, scale = 1) {
       }
     }
   })
+
   return positions
 }
+
 
 
 function onResize() {
