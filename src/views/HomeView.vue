@@ -4,7 +4,7 @@ import WorksList from '@/components/WorksList.vue'
 
 <template>
   <section class="tentative">
-    ※パフォーマンスの問題や、スマホ表示時の表示問題があり、現在も更新作業中です。
+    ※パフォーマンスやスマートフォン表示に関する問題があり、現在も修正作業を進めています。
   </section>
 
   <section id="about" class="about">
