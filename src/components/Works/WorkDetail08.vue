@@ -30,7 +30,7 @@ const workData = {
   </WorkDetailLayout>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
   p {
     margin-bottom: 10px;
   }

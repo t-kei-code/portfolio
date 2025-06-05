@@ -15,7 +15,7 @@ import WorksList from '@/components/WorksList.vue'
 
     <div class="about__container">
       <div class="about__img">
-        <img src="/public/1308734.jpg" alt="" />
+        <img src="/public/about.png" alt="" />
       </div>
       <div class="about__text">
         <ul class="about__list">

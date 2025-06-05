@@ -7,7 +7,7 @@
   <section id="about">
     <div class="about__container">
       <div class="about__img">
-        <img src="/public/1308734.jpg" alt="" />
+        <img src="/public/about.png" alt="" />
       </div>
       <div class="about__text">
         <ul class="about__list">
@@ -121,6 +121,7 @@ section {
   align-items: center;
 
   width: 100%;
+  max-width: 800px;
   margin: 0 auto;
   @include sp {
     display: block;
@@ -129,6 +130,8 @@ section {
 
 .about__img {
   width: 35%;
+  max-width: 400px;
+  margin: 0 auto;
   height: auto;
   @include sp {
     width: 100%;
