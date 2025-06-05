@@ -7,7 +7,7 @@ const workData = {
   // url: 'url',
   image: 'food.png',
   tasks: 'デザイン/',
-  tech: 'figma, illustrator ',
+  tech: 'Figma, Illustrator ',
   duration: '20日',
 }
 </script>

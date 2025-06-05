@@ -176,8 +176,22 @@ import WorksList from '@/components/WorksList.vue'
   justify-content: flex-end;
 }
 .about__btn {
-  padding: 5px 10px;
   margin-top: 10px;
+  position: relative;
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: $brown;
+    transition: width 0.3s ease;
+  }
+
+  &:hover::after {
+    width: 100%;
+  }
 }
 
 /*//////////////// section__lead ///////////////////*/

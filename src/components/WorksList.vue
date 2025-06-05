@@ -1,4 +1,5 @@
 <script setup>
+import { ref, nextTick, onMounted } from 'vue'
 import { RouterLink } from 'vue-router'
 const baseURL = import.meta.env.BASE_URL
 
@@ -60,17 +61,47 @@ const works = [
     image: 'camera.png',
   },
 ]
+const worksRef = ref([])
+let hasShown = false
+
+onMounted(async () => {
+  await nextTick() // DOM描画が終わるのを待つ
+  const target = worksRef.value[0]
+  function handleScroll() {
+    if(hasShown) return;
+
+    const scrollY = window.scrollY
+    const windowHeight = window.innerHeight
+    const targetTop = target.offsetTop
+
+    if(scrollY + windowHeight > targetTop + 100) {
+      worksRef.value.forEach(el => {
+        const inner = el.querySelector('.works__inner')
+        if (inner) inner.classList.add('show')
+      });
+    hasShown = true
+    window.removeEventListener("scroll", handleScroll)
+    }
+  }
+
+  window.addEventListener("scroll", handleScroll)
+  handleScroll()
+})
+
+
 </script>
 
 <template>
   <ul class="works__list">
-    <li class="works__item" v-for="work in works" :key="work.id">
-      <RouterLink :to="`/works/${work.id}`">
-        <img class="works__img" :src="baseURL + work.image" alt="" />
-      </RouterLink>
-      <h3 class="works__title">{{ work.title }}</h3>
-      <p class="works__category">{{ work.category }}</p>
-      <p class="works__occupation">{{ work.occupation }}</p>
+   <li class="works__item" v-for="(work, index) in works" :key="work.id" ref="worksRef">
+      <div class="works__inner" :style="{ transitionDelay: `${index * 0.2}s` }">
+        <RouterLink :to="`/works/${work.id}`">
+          <img class="works__img" :src="baseURL + work.image" alt="" />
+        </RouterLink>
+        <h3 class="works__title">{{ work.title }}</h3>
+        <p class="works__category">{{ work.category }}</p>
+        <p class="works__occupation">{{ work.occupation }}</p>
+      </div>
     </li>
   </ul>
 </template>
@@ -94,11 +125,30 @@ const works = [
     max-width: 400px;
     margin-bottom: 30px;
     font-size: clamp(0.875rem, 0.831rem + 0.19vw, 1rem);
+    border-radius: 10px;
+    
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    }
+
     @include sp {
       width: 100%;
       margin:0 auto 30px;
     }
+
+    .works__inner {
+      transition: opacity 0.6s ease, transform 0.6s ease;
+      opacity: 0;
+      padding: 5px;
+       &.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
   }
+
   &__img {
     object-fit: contain;
     width: 100%;
@@ -109,6 +159,9 @@ const works = [
   }
   &__title {
     font-weight: bold;
+  }
+  &__category {
+    margin-bottom: 0;
   }
 }
 

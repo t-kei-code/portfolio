@@ -7,8 +7,8 @@ const workData = {
   url: 'im-t-kei-portfolio.netlify.app/',
   image: 'portfolio.png',
   tasks: 'デザイン/コーディング/',
-  tech: 'html, css(scss), javascript, vue.js, Three.js, gsap, blender',
-  duration: '3ヶ月',
+  tech: 'HTML, CSS(SCSS), JavaScript, Vue.js, Three.js, gsap, Blender',
+  duration: '4ヶ月',
 }
 </script>
 

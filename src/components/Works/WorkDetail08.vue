@@ -6,7 +6,7 @@ const workData = {
   title: 'レンタルカメラサービス バナー',
   image: 'camera.png',
   tasks: 'デザイン/',
-  tech: 'illustrator, photoshop',
+  tech: 'Illustrator, Photoshop',
   duration: '20日',
 }
 </script>

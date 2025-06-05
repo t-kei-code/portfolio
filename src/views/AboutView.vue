@@ -32,7 +32,7 @@
         <li class="skill__item">
           <h3 class="skill__title">コーディング</h3>
           <p class="skill__text">
-            HTML(2年), CSS,SCSS(2年), javascript(1年), jquery(6カ月), vue.js(1.5カ月)
+            HTML(2年), CSS,SCSS(2年), JavaScript(1年), jquery(6カ月), Vue.js(1.5カ月)
           </p>
           <p class="item__icon"></p>
         </li>

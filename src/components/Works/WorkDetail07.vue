@@ -6,7 +6,7 @@ const workData = {
   title: '洗顔用化粧水バナー',
   image: 'kesyousui.jpg',
   tasks: 'デザイン',
-  tech: 'illustrator, photoshop',
+  tech: 'Illustrator, Photoshop',
   duration: '2日',
 }
 </script>

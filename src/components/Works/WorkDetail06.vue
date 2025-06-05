@@ -7,7 +7,7 @@ const workData = {
   url: 'https://cottleya.jobtra-itweb.com/SPORTHERE/',
   image: 'sport.png',
   tasks: 'コーディング/',
-  tech: 'html, css',
+  tech: 'HTML, CSS',
   duration: '1週間',
 }
 </script>

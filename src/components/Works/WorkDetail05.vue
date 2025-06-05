@@ -7,7 +7,7 @@ const workData = {
   url: 'https://cottleya.jobtra-itweb.com/taiyo-preschool/',
   image: 'taiyo.png',
   tasks: 'デザイン/コーディング/',
-  tech: 'html, css',
+  tech: 'HTML, CSS',
   duration: '1ヶ月',
 }
 </script>
