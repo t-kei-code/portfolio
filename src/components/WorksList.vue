@@ -22,7 +22,7 @@ const works = [
     id: 'work03',
     title: '青牡丹工務店 コーポレートサイト',
     category: 'コーディング',
-    occupation: '個人製作',
+    occupation: '課題',
     image: 'aobotan.png',
   },
   {
