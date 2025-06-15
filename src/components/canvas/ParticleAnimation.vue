@@ -168,7 +168,7 @@ onMounted(() => {
 
   function animate() {
     if (!isMounted) return
-    requestAnimationFrame(animate)
+    animationId = requestAnimationFrame(animate)
     const elapsedTime = clock.getElapsedTime()
     group.rotation.y = elapsedTime * 0.5
     if (material) material.uniforms.opacity.value = opacity.value
@@ -193,6 +193,17 @@ onUnmounted(() => {
   cancelAnimationFrame(animationId)
   gsapTimeline?.kill()
   window.removeEventListener('resize', handleResize)
+
+  scene?.remove(group)
+  particles?.geometry.dispose()
+  particles?.material.dispose()
+
+  // if (renderer) {
+  //   renderer.dispose()
+  //   renderer.forceContextLoss()
+  //   renderer.context = null
+  //   renderer.domElement = null
+  // }
 })
 </script>
 
