@@ -5,7 +5,7 @@ import * as THREE from 'three'
 const canvasRef = ref(null)
 let renderer, scene, camera, particles, speeds, animationId
 let material, geometry
-const clock = new THREE.Clock() // ⏳ FPS に依存しないための Clock
+const clock = new THREE.Clock() //  FPS に依存しないための Clock
 
 function onResize() {
   if (!camera || !renderer || !canvasRef.value) return
@@ -68,11 +68,11 @@ onMounted(() => {
   function animate() {
     animationId = requestAnimationFrame(animate)
 
-    const elapsedTime = clock.getElapsedTime() // ⏳ 経過時間（秒）
+    const elapsedTime = clock.getElapsedTime() //  経過時間（秒）
 
     const positionsArray = particles.geometry.attributes.position.array
     for (let i = 0; i < count; i++) {
-      positionsArray[i * 3] += Math.sin(elapsedTime * 0.2 + i) * speeds[i * 3] // ⏳ 経過時間を使う
+      positionsArray[i * 3] += Math.sin(elapsedTime * 0.2 + i) * speeds[i * 3] //  経過時間を使う
       positionsArray[i * 3 + 1] += Math.sin(elapsedTime * 0.3 + i) * speeds[i * 3 + 1]
     }
 

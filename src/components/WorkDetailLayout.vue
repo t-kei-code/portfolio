@@ -40,7 +40,7 @@ const baseURL = import.meta.env.BASE_URL
             <p><slot name="summary"></slot></p>
           </li>
           <li>
-            <h5 class="detail__title">工夫した点</h5>
+            <h5 class="detail__title">主な取り組み</h5>
             <p><slot name="point"></slot></p>
           </li>
         </ul>

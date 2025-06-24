@@ -18,6 +18,12 @@ const workData = {
       5ページ構成の架空の工務店コーポレートサイトのコーディングを担当しました。
     </template>
     <template #point>
+      <h5>効率的な開発フロー</h5>
+      <p>
+        <p>・全体のSCSS設計はBEMに従い、可読性、修正のしやすさを意識しました。</p>
+        <p>・SCSSファイルをページやコンポーネント単位で分割し、修正・更新の効率化を行ないました。</p>
+      </p>
+
       <div class="point__box">
         <img src="/public/image 35.png" alt="" srcset="">
         <p>全体のSCSS設計はBEMに従い、保守性を意識しました。</p>
@@ -25,7 +31,7 @@ const workData = {
       <div class="point__box">
         <img src="/public/image 34.png" alt="" srcset="">
         <p>SCSSファイルをページや共通パーツごとに分割し、管理や再利用しやすい設計に</p>
-      </div>
+      </div>    
     </template>
 
     <template #afterUrl>

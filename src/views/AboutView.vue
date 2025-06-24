@@ -14,9 +14,9 @@
           <li class="about__item">Kei Tsukamoto</li>
           <li class="about__item">塚本 渓</li>
           <li class="about__item-text">
-            1998年生まれ京都府出身で、現在は就労移行支援に通いながらweb制作の勉強を続けています。<br />
-            多方面の知識やモダンな技術を積極的に吸収し、デザインも実装も両方できる自走力のあるクリエイターを目指しています。
-            javascriptを用いた動きのあるサイトが好きです。 趣味は、ギターとゲームが好きです。
+            大学卒業後、ネットワークエンジニアとして勤務していましたが、体調を崩し退職。<br>
+            その後、療養期間を経て福祉就労を始める中でHTMLやCSSに出会い、独学でコーディングの学習をスタートしました。<br>
+            現在はコーダーとしての就職を目指し、就労移行支援事業所でWEB制作について学んでいます。
           </li>
         </ul>
       </div>
@@ -24,8 +24,8 @@
   </section>
   <section id="skill">
     <h2 class="section__title">
-      <p class="section__title--en">Skill</p>
-      <p class="section__title--jp">スキル</p>
+      <p class="section__title--en">スキル</p>
+      <p class="section__title--jp">Skill</p>
     </h2>
     <div class="skill__container">
       <ul class="skill__list">
@@ -52,36 +52,46 @@
     </div>
   </section>
 
-  <section>
+  <section class="strengths">
     <h2 class="section__title">
-      <p class="section__title--en">Strengths</p>
-      <p class="section__title--jp">強み</p>
+      <p class="section__title--en">強み</p>
+      <p class="section__title--jp">Strengths</p>
     </h2>
-    <p>・探求心 ー 新しい技術や分野にも積極的に挑戦し、興味を持ったことを深堀して取り組みます。</p>
-    <p>・分析力 ー つまずいた原因を見つけて改善につなげるなど、課題から学ぶ力があります。</p>
-    <p>・自走力 ー 自ら調べて試しながら学ぶことが得意で、手を動かしながら理解を深めていきます。</p>
+    <p class="strengths__item">・探求心 ー 新しい技術や分野にも積極的に挑戦し、興味を持ったことを深堀して取り組みます。</p>
+    <p class="strengths__item">・分析力 ー つまずいた原因を見つけて改善につなげるなど、課題から学ぶ力があります。</p>
+    <p class="strengths__item">・自走力 ー 自ら調べて試しながら学ぶことが得意で、手を動かしながら理解を深めていきます。</p>
   </section>
 
-  <section>
+  <section class="future">
     <h2 class="section__title">
-      <p class="section__title--en">Hindrance</p>
-      <p class="section__title--jp">障害について</p>
+      <p class="section__title--en">将来について</p>
+      <p class="section__title--jp">Future</p>
     </h2>
-    <p class="hindrance__lead">障害内容：ADHD(不注意優勢型)、うつ病</p>
-    <div class="hindrance">
-      <p class="hindrance__title">ADHDについて</p>
-        <div class="hindrance__text">
-          <p>
-            2022年5月に注意欠陥・多動性障害（ADHD）の不注意優勢型と診断を受けました。<br />
-            <span>興味・集中の偏り</span>、<span>マルチタスクが苦手</span>、<span>対人場面で疲れやすい</span>といった特性があります。
-            タスクの細分化、メモや付箋を活用した視覚的な情報整理、服薬などで自己対処をおこなっています。<br />
-          </p>
-        </div>
+    
+    <p class="future__title">1年目</p>
+    <div class="future__text">
+      <p>
+        まずは基礎力をしっかりと身につけ、カンプ通りに正確なコーディングを行えることを目指します。<br>
+        現場でのルールや仕事の流れを理解し、一つひとつの課題に丁寧に向き合いながら、信頼されるコーダーとして着実に成長していきたいです。
+      </p>
+    </div>
 
-      <div>
-        <p class="hindrance__title">配慮事項について</p>
-        <p>月に一回、半日間の通院休暇をいただきたいです。</p>
-      </div>
+    <p class="future__title">3年目</p>
+    <div class="future__text">
+      <p>
+        より高度なコーディングや、表現力のあるWebサイト制作にも積極的に挑戦したいと考えています。<br>
+        JavaScriptやフロントエンドの技術を深め、自分なりの提案や工夫ができるエンジニアを目指します。<br>
+        また、後輩やチームメンバーと協力し、プロジェクト全体のクオリティ向上に貢献していきたいです。
+      </p>
+    </div>
+
+    <p class="future__title">5年目</p>
+    <div class="future__text">
+      <p>
+        より高度なWeb表現やユーザー体験の設計にも携わり、プロジェクト全体をリードできる存在を目指します。<br>
+        チーム内では後輩のサポートや技術共有にも積極的に取り組み、新しい価値を生み出せるエンジニアになることが目標です。<br>
+        常に最新技術にアンテナを張り、Web制作の現場で頼られる存在であり続けたいと考えています。
+      </p>
     </div>
   </section>
 </template>
@@ -197,8 +207,14 @@ section {
     }
 }
 
+.strengths {
+  &__item {
+    margin-bottom: 12px;
+  }
+}
+
 /////障害について
-.hindrance {
+.future {
   margin-bottom: 20px;
   &__title {
   font-weight: bold;

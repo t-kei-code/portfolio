@@ -9,8 +9,8 @@ import WorksList from '@/components/WorksList.vue'
 
   <section id="about" class="about">
     <h2 class="section__title">
-      <p class="section__title--en">About</p>
-      <p class="section__title--jp">私について</p>
+      <p class="section__title--en">私について</p>
+      <p class="section__title--jp">About</p>
     </h2>
 
     <div class="about__container">
@@ -22,7 +22,7 @@ import WorksList from '@/components/WorksList.vue'
           <li class="about__item">Kei Tsukamoto</li>
           <li class="about__item">塚本 渓</li>
           <li class="about__item">
-            1998年生まれ京都府出身で、現在は就労移行支援に通いながらweb制作の勉強を続けています。<br />
+            1998年生まれ京都府出身、現在は就労移行支援に通いながらコーダー就職を目指し活動中です。<br />
             デザインも実装も両方できる自走力のあるクリエイターを目指しています。
           </li>
           <li class="about__item">
@@ -35,8 +35,8 @@ import WorksList from '@/components/WorksList.vue'
 
   <section id="lead" class="lead">
     <h2 class="section__title">
-      <p class="section__title--en">Skill</p>
-      <p class="section__title--jp">できること</p>
+      <p class="section__title--en">できること</p>
+      <p class="section__title--jp">Skill</p>
     </h2>
     <div class="lead__container">
       <ul class="lead__list">
@@ -62,8 +62,8 @@ import WorksList from '@/components/WorksList.vue'
   <section id="works" class="works">
     <div class="works__inner">
       <h2 class="section__title">
-        <p class="section__title--en">Works</p>
-        <p class="section__title--jp">制作物</p>
+        <p class="section__title--en">制作物</p>
+        <p class="section__title--jp">Works</p>
       </h2>
       <div class="works__container">
         <WorksList></WorksList>

@@ -15,15 +15,30 @@ const workData = {
 <template>
   <WorkDetailLayout v-bind="workData">
     <template #summary>
-      本ポートフォリオサイト
+        本ポートフォリオサイトです。<br>
+        Vue.js + Three.jsで構築しました。3Dアニメーションやページ遷移演出を取り入れた動きのあるサイト表現に挑戦しました。
     </template>
     <template #point>
-      本ポートフォリオサイトです。<br>
-      Vue.js + Three.jsで構築しました。3Dアニメーションやページ遷移演出を取り入れた動きのあるサイト表現に挑戦しました。
+      
+
+      
+      <h5 class="point__title">3Dアニメーション実装</h5>
       <p>
-        メインビジュアルではBlenderで制作した3Dオブジェクトデータをthree.jsでパーティクル(粒子)化し、変形のアニメーションを実装しました。<br>
-        ※パフォーマンスの問題や、スマホ表示時の表示問題があり、現在も修正作業中です。
+        メインビジュアルには、Blenderで制作した3DオブジェクトをThree.jsで読み込み、パーティクル（粒子）状に変換して変形させるアニメーションを実装しています。
       </p>
+
+      <h5 class="point__title">効率的な開発フロー</h5>
+      <p>・全体のSCSS設計はBEMに従い、可読性、修正のしやすさを意識しました。</p>
+      <p>・コンポーネント単位のファイル管理で、修正・更新の効率化を行ないました。</p>
+      <p>・制作物のデータはVue.jsでオブジェクトとして管理し、簡単に掲載物の入れ替えを行えるようにしました。</p>
+
+      <h5></h5>
+      
+
+      <h5 class="point__title">開発環境</h5>
+      開発環境にはViteを使用し、ソースコードの管理にはGit、公開にはNetlifyを利用しています。
+
+      
       <!-- <img src="/public/スクリーンショット 2025-05-23 121106.png" alt="" srcset=""> -->
     </template>
   </WorkDetailLayout>
