@@ -18,20 +18,23 @@ const workData = {
       5ページ構成の架空の工務店コーポレートサイトのコーディングを担当しました。
     </template>
     <template #point>
-      <h5>効率的な開発フロー</h5>
-      <p>
-        <p>・全体のSCSS設計はBEMに従い、可読性、修正のしやすさを意識しました。</p>
-        <p>・SCSSファイルをページやコンポーネント単位で分割し、修正・更新の効率化を行ないました。</p>
+     
+      <h5 class="point__title">開発プロセスの効率化</h5>
+      <p>・全体のSCSS設計はBEMに従い、可読性、修正のしやすさを意識しました。</p>
+      <p>・コンポーネント単位のファイル管理で、修正・更新の効率化を行ないました。</p>
+   
+      <h5 class="point__title">入力チェック</h5>
+      <p>お問い合わせフォームでは必須項目が未入力の場合送信ボタンをクリックできないよう実装しました。</p>
+
+      <h5 class="point__title">Swiperスライダー</h5>
+      <p>トップページのギャラリースライダーはSwiperを利用。<br>
+        画面幅に沿って画像表示数を制御しています。
       </p>
 
-      <div class="point__box">
-        <img src="/public/image 35.png" alt="" srcset="">
-        <p>全体のSCSS設計はBEMに従い、保守性を意識しました。</p>
-      </div>
-      <div class="point__box">
-        <img src="/public/image 34.png" alt="" srcset="">
-        <p>SCSSファイルをページや共通パーツごとに分割し、管理や再利用しやすい設計に</p>
-      </div>    
+      <h5 class="point__title">ピクセルパーフェクト</h5>
+      <p>PerfectPixelを使用し、デザインカンプに忠実なコーディングを行いました。
+      </p>
+      
     </template>
 
     <template #afterUrl>

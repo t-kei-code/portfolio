@@ -22,8 +22,8 @@ import WorksList from '@/components/WorksList.vue'
           <li class="about__item">Kei Tsukamoto</li>
           <li class="about__item">塚本 渓</li>
           <li class="about__item">
-            1998年生まれ京都府出身、現在は就労移行支援に通いながらコーダー就職を目指し活動中です。<br />
-            デザインも実装も両方できる自走力のあるクリエイターを目指しています。
+            1998年生まれ、京都府出身。現在は就労移行支援に通い、コーダーとしての就職を目指して学習中です。<br>
+            基本的なサイトのコーディングに加え、Three.jsなどを使った演出やインタラクティブな表現、デザインにも幅広く取り組んでいます。    
           </li>
           <li class="about__item">
             <button class="about__btn"><RouterLink to="/about">View Profile</RouterLink></button>
@@ -47,7 +47,7 @@ import WorksList from '@/components/WorksList.vue'
         </li>
         <li class="lead__item">
           <p class="lead__item-title"> デザイン</p>
-          <p class="lead__item-text">既存素材の簡単な加工、調整、LPやバナーの制作が可能です。<br>コーダー視点で「実装しやすいデザイン」を意識しています。</p>
+          <p class="lead__item-text">既存素材の簡単な加工、画像補正、LPやバナーの制作が可能です。<br>コーダー視点で「実装しやすいデザイン」を意識しています。</p>
           <p class="lead__item-skill">Illustrator / Photoshop / Figma</p>
         </li>
         <li class="lead__item">

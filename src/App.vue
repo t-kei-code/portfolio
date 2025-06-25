@@ -88,6 +88,12 @@ const toggleMenu = () => {
   <main>
     <RouterView />
   </main>
+  <div class="thanks" :class= "{'is-about' : route.name === 'about'}">
+    <div class="thanks__box">
+      <span>Thank you for visting Thank you for visting Thank you for visting Thank you for visting Thank you for visting</span>
+      <span>Thank you for visting Thank you for visting Thank you for visting Thank you for visting Thank you for visting</span>
+    </div>
+  </div>
   <footer>
     <p>Kei Tsukamoto Portfolio</p>
   </footer>
@@ -362,6 +368,35 @@ body {
 /* スクロール時のスタイル */
 header.on {
   color: rgba(0, 0, 0, 0.8);
+}
+
+.thanks {
+  font-weight: bold;
+  font-size: 100px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background: $rightGlay; // 見えやすく
+  
+
+  &.is-about {
+    background-color: white;
+  }
+
+  &__box {
+    display: flex;
+    white-space: nowrap;
+    animation: slide 12s linear infinite;
+
+    span {
+      display: inline-block;
+      padding-right: 4rem; /* 余白調整 */
+    }
+  }
+
+    @keyframes slide {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
 }
 
 /* ////footer///// */
