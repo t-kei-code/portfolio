@@ -1,4 +1,5 @@
 <script setup>
+import ThreeGallary from '@/components/three-gallary/ThreeGallary.vue';
 import WorksList from '@/components/WorksList.vue'
 </script>
 
@@ -70,6 +71,10 @@ import WorksList from '@/components/WorksList.vue'
       </div>
     </div>
   </section>
+
+  <!-- <section class="works-three">
+    <ThreeGallary></ThreeGallary>
+  </section> -->
 </template>
 
 <style scoped lang="scss">
