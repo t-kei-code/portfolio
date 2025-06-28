@@ -7,6 +7,10 @@ let ctx
 let animationFrameId // アニメーションをキャンセルするためのID
 let time = 0
 
+// outerHeight方式のための変数
+let prevWindowOuterH = window.outerHeight
+let prevWindowW = window.innerWidth
+
 function drawWave() {
   if (!ctx) return
 
@@ -33,6 +37,11 @@ function drawWave() {
 }
 
 function handleResize() {
+  // outerHeightかinnerWidthに変化がなければリサイズしない
+  if (window.outerHeight === prevWindowOuterH && window.innerWidth === prevWindowW) return
+  prevWindowOuterH = window.outerHeight
+  prevWindowW = window.innerWidth
+
   if (!canvasRef.value) return
   canvasRef.value.width = window.innerWidth
   canvasRef.value.height = window.innerHeight
@@ -43,6 +52,10 @@ onMounted(() => {
   if (!canvas) return
 
   ctx = canvas.getContext('2d')
+
+  // 初回のouterHeight/innerWidth保存
+  prevWindowOuterH = window.outerHeight
+  prevWindowW = window.innerWidth
 
   handleResize()
 
@@ -59,7 +72,6 @@ onUnmounted(() => {
   window.removeEventListener('resize', handleResize)
   ctx = null // ctx を解放
 })
-
 </script>
 
 <template>

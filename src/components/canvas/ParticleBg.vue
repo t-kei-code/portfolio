@@ -5,27 +5,45 @@ import * as THREE from 'three'
 const canvasRef = ref(null)
 let renderer, scene, camera, particles, speeds, animationId
 let material, geometry
-const clock = new THREE.Clock() //  FPS に依存しないための Clock
+const clock = new THREE.Clock() // FPS に依存しないための Clock
+
+// outerHeightベースで一度だけリサイズする用
+let prevWindowOuterH = window.outerHeight
+let prevWindowInnerW = window.innerWidth
+
+function setSize() {
+  // サイズ保存用
+  prevWindowOuterH = window.outerHeight
+  prevWindowInnerW = window.innerWidth
+  // three.jsカメラ/レンダラー再設定
+  if (camera && renderer) {
+    camera.aspect = window.innerWidth / window.innerHeight
+    camera.updateProjectionMatrix()
+    renderer.setSize(window.innerWidth, window.innerHeight)
+    renderer.setPixelRatio(window.devicePixelRatio || 1)
+  }
+}
 
 function onResize() {
-  if (!camera || !renderer || !canvasRef.value) return
-
-  const width = window.innerWidth
-  const height = window.innerHeight
-  const dpr = window.devicePixelRatio || 1
-
-  camera.aspect = width / height
-  camera.updateProjectionMatrix()
-
-  renderer.setSize(width, height)
-  renderer.setPixelRatio(dpr)
+  // outerHeight or innerWidth が変わった時だけ再設定
+  if (
+    window.outerHeight !== prevWindowOuterH ||
+    window.innerWidth !== prevWindowInnerW
+  ) {
+    setSize()
+  }
 }
 
 onMounted(() => {
   if (!canvasRef.value) return
 
   scene = new THREE.Scene()
-  camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
+  camera = new THREE.PerspectiveCamera(
+    75,
+    window.innerWidth / window.innerHeight,
+    0.1,
+    1000
+  )
   camera.position.z = 5
 
   renderer = new THREE.WebGLRenderer({
@@ -68,11 +86,11 @@ onMounted(() => {
   function animate() {
     animationId = requestAnimationFrame(animate)
 
-    const elapsedTime = clock.getElapsedTime() //  経過時間（秒）
+    const elapsedTime = clock.getElapsedTime()
 
     const positionsArray = particles.geometry.attributes.position.array
     for (let i = 0; i < count; i++) {
-      positionsArray[i * 3] += Math.sin(elapsedTime * 0.2 + i) * speeds[i * 3] //  経過時間を使う
+      positionsArray[i * 3] += Math.sin(elapsedTime * 0.2 + i) * speeds[i * 3]
       positionsArray[i * 3 + 1] += Math.sin(elapsedTime * 0.3 + i) * speeds[i * 3 + 1]
     }
 
@@ -82,10 +100,7 @@ onMounted(() => {
 
   animate()
   window.addEventListener('resize', onResize)
-
-  requestAnimationFrame(() => {
-    onResize()
-  })
+  setSize() // 初期サイズセット
 })
 
 onUnmounted(() => {
@@ -126,6 +141,8 @@ onUnmounted(() => {
 canvas {
   position: absolute;
   inset: 0;
+  width: 100vw;
+  height: 100vh;
   background: linear-gradient(
     90deg,
     rgba(131, 131, 131, 1),

@@ -3,17 +3,26 @@ import { onMounted, onUnmounted, ref } from 'vue'
 import * as THREE from "three"
 import gsap from 'gsap'
 
-const canvasRef = ref(null);
-const opacity = ref(0);//画面遷移アニメーション用
+const canvasRef = ref(null)
+const opacity = ref(0) // 画面遷移アニメーション用
 
 let camera, renderer, geometry, material
 let animationId
 
+// outerHeight方式用の変数
+let prevWindowOuterH = window.outerHeight
+let prevWindowW = window.innerWidth
+
 function onResize() {
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-  }
+  // outerHeightかinnerWidthに変化がなければリサイズしない
+  if (window.outerHeight === prevWindowOuterH && window.innerWidth === prevWindowW) return
+  prevWindowOuterH = window.outerHeight
+  prevWindowW = window.innerWidth
+
+  camera.aspect = window.innerWidth / window.innerHeight
+  camera.updateProjectionMatrix()
+  renderer.setSize(window.innerWidth, window.innerHeight)
+}
 
 onMounted(()=> {
   gsap.to(opacity, {
@@ -22,17 +31,17 @@ onMounted(()=> {
     ease: "power2.in",
   })
 
-  camera = new THREE.PerspectiveCamera(75,window.innerWidth / window.innerHeight, 1, 1000);
-  camera.position.z = 5;
+  camera = new THREE.PerspectiveCamera(75,window.innerWidth / window.innerHeight, 1, 1000)
+  camera.position.z = 5
 
   renderer = new THREE.WebGLRenderer({
     canvas: canvasRef.value,
     alpha: true,
     antialias: true,
   })
-  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setSize(window.innerWidth, window.innerHeight)
 
-  const scene = new THREE.Scene();
+  const scene = new THREE.Scene()
 
   geometry = new THREE.SphereGeometry(1,128,128)
   material = new THREE.ShaderMaterial({
@@ -75,22 +84,25 @@ onMounted(()=> {
         gl_FragColor = vec4(color, fresnel * opacity);
       }
     `
-  });
+  })
 
-
-  const mesh = new THREE.Mesh(geometry, material);
+  const mesh = new THREE.Mesh(geometry, material)
   mesh.position.set(1.0, 1.5, 1.0)
-  scene.add(mesh);
+  scene.add(mesh)
 
-  window.addEventListener("resize", onResize);
+  // outerHeight/innerWidthの初期値保存
+  prevWindowOuterH = window.outerHeight
+  prevWindowW = window.innerWidth
+
+  window.addEventListener("resize", onResize)
 
   function animate() {
     animationId = requestAnimationFrame(animate)
-    material.uniforms.time.value += 0.03;
-    material.uniforms.opacity.value = opacity.value;
+    material.uniforms.time.value += 0.03
+    material.uniforms.opacity.value = opacity.value
     renderer.render(scene, camera)
   }
-  animate();
+  animate()
 
   requestAnimationFrame(() => {
     onResize()
@@ -105,7 +117,6 @@ onUnmounted(() => {
   material.dispose()
   renderer.dispose()
 })
-
 </script>
 
 <template>
@@ -113,9 +124,8 @@ onUnmounted(() => {
 </template>
 
 <style scoped lang="scss">
-  canvas {
-    position: absolute;
-    inset: 0;
-  }
-
+canvas {
+  position: absolute;
+  inset: 0;
+}
 </style>
