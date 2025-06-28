@@ -15,10 +15,6 @@ const clock = new THREE.Clock()
 const opacity = ref(1)
 const isMobile = window.innerWidth <= 768
 
-// outerHeight方式用の変数
-let prevWindowOuterH = window.outerHeight
-let prevWindowW = window.innerWidth
-
 function extractPosition(model, scale = 1) {
   model.updateMatrixWorld(true)
   let positions = []
@@ -37,11 +33,6 @@ function extractPosition(model, scale = 1) {
 }
 
 function onResize() {
-  // outerHeightかinnerWidthに変化がなければ何もしない
-  if (window.outerHeight === prevWindowOuterH && window.innerWidth === prevWindowW) return
-  prevWindowOuterH = window.outerHeight
-  prevWindowW = window.innerWidth
-
   if (!camera || !renderer || !canvasRef.value) return
   const width = window.innerWidth
   const height = window.innerHeight
@@ -185,9 +176,6 @@ onMounted(() => {
   }
 
   animate()
-  // outerHeight方式用
-  prevWindowOuterH = window.outerHeight
-  prevWindowW = window.innerWidth
   window.addEventListener('resize', handleResize)
   requestAnimationFrame(() => onResize())
 })
