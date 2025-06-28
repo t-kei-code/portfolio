@@ -8,7 +8,7 @@ const works = [
   { id: 'work01', title: '合同会社Work様 ホームページ', category: 'デザイン/コーディング/WordPress化', occupation: 'クライアントワーク', image: 'work.png' },
   { id: 'work02', title: 'KEI TSUKAMOTO ポートフォリオサイト', category: 'デザイン/コーディング', occupation: '個人製作', image: 'portfolio.png' },
   { id: 'work03', title: '青牡丹工務店 コーポレートサイト', category: 'コーディング', occupation: '課題', image: 'aobotan.png' },
-  { id: 'work04', title: 'イタリアンレストランSHU LP', category: 'デザイン', occupation: '課題', image: 'food.png' },
+  { id: 'work04', title: 'イタリアンダイニングSHU LP', category: 'デザイン', occupation: '課題', image: 'food.png' },
   { id: 'work05', title: 'たいよう保育園 LP', category: 'デザイン/コーディング', occupation: '課題', image: 'taiyo.png' },
   { id: 'work06', title: 'SPORTHERE LP', category: 'コーディング', occupation: '課題', image: 'sport.png' },
   { id: 'work07', title: '洗顔用化粧水バナー', category: 'デザイン', occupation: '課題', image: 'kesyousui.jpg' },

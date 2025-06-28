@@ -1,6 +1,20 @@
 <script setup>
 import ThreeGallary from '@/components/three-gallary/ThreeGallary.vue';
 import WorksList from '@/components/WorksList.vue'
+import { Swiper, SwiperSlide } from "swiper/vue"
+import { Pagination, Navigation} from "swiper/modules"
+import "swiper/css";
+import 'swiper/css/pagination'
+import 'swiper/css/navigation'
+
+const videos = [
+  { src: "/Ripple.mp4", link: "https://im-t-kei-ripple-effect.netlify.app/"},
+  { src: "/Ripple.mp4", link: "https://im-t-kei-ripple-effect.netlify.app/"},
+  { src: "/Ripple.mp4", link: "https://im-t-kei-ripple-effect.netlify.app/"},
+  { src: "/Ripple.mp4", link: "https://im-t-kei-ripple-effect.netlify.app/"},
+  { src: "/Ripple.mp4", link: "https://im-t-kei-ripple-effect.netlify.app/"},
+  { src: "/Ripple.mp4", link: "https://im-t-kei-ripple-effect.netlify.app/"},
+]
 </script>
 
 <template>
@@ -16,7 +30,7 @@ import WorksList from '@/components/WorksList.vue'
 
     <div class="about__container">
       <div class="about__img">
-        <img src="/public/1308734.jpg" alt="" />
+        <img src="/public/aboutMe.png" alt="" />
       </div>
       <div class="about__text">
         <ul class="about__list">
@@ -72,9 +86,29 @@ import WorksList from '@/components/WorksList.vue'
     </div>
   </section>
 
-  <!-- <section class="works-three">
-    <ThreeGallary></ThreeGallary>
-  </section> -->
+  <section class="works-three">
+    <h2 class="section__title works-three__title">
+      <p class="section__title--en">3D・インタラクション</p>
+      <p class="section__title--jp">3D/interraction</p>
+    </h2>
+    <div class="works__container">
+      <Swiper 
+        class="works-three__slider"
+        :space-between="30"
+        :slidesPerView="4"
+        :loop="true"
+        :pagination="{ clickable: true}"
+        :navigation="true"
+        :modules="[Pagination, Navigation]"
+        >
+        <SwiperSlide v-for="(video, i) in videos" :key="i" class="works-three__item">
+          <a :href="video.link" target="_blank" rel="noopener">
+            <video :src="video.src" autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover;"></video>
+          </a>
+        </SwiperSlide>
+    </Swiper>
+  </div>
+  </section>
 </template>
 
 <style scoped lang="scss">
@@ -148,7 +182,7 @@ import WorksList from '@/components/WorksList.vue'
 }
 
 .about__img {
-  width: 35%;
+  width: 40%;
   height: auto;
   @include sp {
     width: auto;
@@ -281,6 +315,31 @@ import WorksList from '@/components/WorksList.vue'
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
+}
+
+.works-three {
+  padding: 0 5%;
+  max-width: 1400px;
+  margin: 30px auto 0;
+   &__container {
+  max-width: 800px;
+  margin: 50px auto;
+  color: #787069;
+  }
+  &__title {
+    
+  }
+  &__item {
+    width: 30%;
+    height: 250px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
 }
 
 </style>
