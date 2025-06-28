@@ -8,8 +8,8 @@ import 'swiper/css/pagination'
 import 'swiper/css/navigation'
 
 const videos = [
-  { src: "/Ripple.mp4", link: "https://im-t-kei-ripple-effect.netlify.app/"},
-  { src: "/Ripple.mp4", link: "https://im-t-kei-ripple-effect.netlify.app/"},
+  { src: "/Ripple.mp4", link: "https://im-t-kei-ripple-effect.netlify.app/", title: "Ripple Effect"},
+  { src: "/RiquidGlass.mp4", link: "https://im-t-kei-riquid-glass.netlify.app/", title: "RiquidGlass"},
   { src: "/Ripple.mp4", link: "https://im-t-kei-ripple-effect.netlify.app/"},
   { src: "/Ripple.mp4", link: "https://im-t-kei-ripple-effect.netlify.app/"},
   { src: "/Ripple.mp4", link: "https://im-t-kei-ripple-effect.netlify.app/"},
@@ -95,16 +95,31 @@ const videos = [
       <Swiper 
         class="works-three__slider"
         :space-between="30"
-        :slidesPerView="4"
+        :slidesPerView="3"
         :loop="true"
         :pagination="{ clickable: true}"
         :navigation="true"
         :modules="[Pagination, Navigation]"
-        >
+        :breakpoints="{
+          0: { slidesPerView: 1, spaceBetween: 10 },
+          600: { slidesPerView: 2, spaceBetween: 20 },
+          1024: { slidesPerView: 3, spaceBetween: 30 }
+        }"
+      >
         <SwiperSlide v-for="(video, i) in videos" :key="i" class="works-three__item">
-          <a :href="video.link" target="_blank" rel="noopener">
-            <video :src="video.src" autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover;"></video>
-          </a>
+          <video :src="video.src" autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover;"></video>
+          <a
+            class="demo-link"
+            :href="video.link"
+            target="_blank"
+            rel="noopener"
+            @click.stop
+          ><h4 style="font-weight: bold;">{{video.title}}
+            <svg width="16" height="16" viewBox="0 0 24 24" style="vertical-align: middle; margin-left: 4px;">
+              <path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42L17.59 5H14V3M5 5h5V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-5h-2v5H5V5Z"/>
+            </svg>
+          </h4>
+        </a>
         </SwiperSlide>
     </Swiper>
   </div>
@@ -320,26 +335,11 @@ const videos = [
 .works-three {
   padding: 0 5%;
   max-width: 1400px;
-  margin: 30px auto 0;
+  margin: 30px auto;
    &__container {
   max-width: 800px;
   margin: 50px auto;
   color: #787069;
   }
-  &__title {
-    
-  }
-  &__item {
-    width: 30%;
-    height: 250px;
-    padding-top: 30px;
-    padding-bottom: 30px;
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-  }
 }
-
 </style>
