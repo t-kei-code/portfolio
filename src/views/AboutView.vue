@@ -329,6 +329,7 @@ section {
     max-width: 280px;
     white-space: pre-line;
     @include sp {
+      min-width: 140px;
       font-size: 0.96em;
     }
   }
