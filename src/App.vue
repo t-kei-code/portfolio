@@ -154,11 +154,11 @@ body {
   width: 100%;
   position: relative;
   overflow: hidden;
-  // transition: height ease 1s;
+  transition: height ease 1s;
 
 &.is-about {
     height: calc(var(--vh, 1vh) * 50);
-    // transition: height 1s ease;
+    transition: height 1s ease;
   }
 
   &__title {
