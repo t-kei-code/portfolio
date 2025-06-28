@@ -52,7 +52,7 @@ const toggleMenu = () => {
     <p class="loading__text">Loading...</p>
   </div>
   <div class="canvas" :class="{ 'is-about' : route.name === 'about'}" v-if="route.name !== 'works'">
-    <!-- <ParticleBg ></ParticleBg> -->
+    <ParticleBg ></ParticleBg>
     <WaveAnimation></WaveAnimation>
     <ParticleAnimation v-if="route.name ==='home'"></ParticleAnimation>
     <AboutAnimation v-if="route.name ==='about'"></AboutAnimation>
