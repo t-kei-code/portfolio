@@ -10,18 +10,14 @@ import 'swiper/css/navigation'
 const videos = [
   { src: "/Ripple.mp4", link: "https://im-t-kei-ripple-effect.netlify.app/", title: "Ripple Effect"},
   { src: "/RiquidGlass.mp4", link: "https://im-t-kei-riquid-glass.netlify.app/", title: "RiquidGlass"},
-  { src: "/Ripple.mp4", link: "https://im-t-kei-ripple-effect.netlify.app/"},
-  { src: "/Ripple.mp4", link: "https://im-t-kei-ripple-effect.netlify.app/"},
-  { src: "/Ripple.mp4", link: "https://im-t-kei-ripple-effect.netlify.app/"},
-  { src: "/Ripple.mp4", link: "https://im-t-kei-ripple-effect.netlify.app/"},
+  { src: "/Wave.mp4", link: "https://im-t-kei-wave-animation.netlify.app/", title: "WaveAnimation"},
+  { src: "/Fog.mp4", link: "https://im-t-kei-fog-animation.netlify.app/", title:"FogAnimation"},
+  // { src: "/Ripple.mp4", link: "https://im-t-kei-ripple-effect.netlify.app/"},
+  // { src: "/Ripple.mp4", link: "https://im-t-kei-ripple-effect.netlify.app/"},
 ]
 </script>
 
 <template>
-  <section class="tentative">
-    ※パフォーマンスやスマートフォン表示に関する問題があり、現在も修正作業を進めています。
-  </section>
-
   <section id="about" class="about">
     <h2 class="section__title">
       <p class="section__title--en">私について</p>
@@ -88,8 +84,8 @@ const videos = [
 
   <section class="works-three">
     <h2 class="section__title works-three__title">
-      <p class="section__title--en">3D・インタラクション</p>
-      <p class="section__title--jp">3D/interraction</p>
+      <p class="section__title--en">制作物</p>
+      <p class="section__title--jp">Three.js Project</p>
     </h2>
     <div class="works__container">
       <Swiper 
@@ -109,7 +105,7 @@ const videos = [
         <SwiperSlide v-for="(video, i) in videos" :key="i" class="works-three__item">
           <video :src="video.src" autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover;"></video>
           <a
-            class="demo-link"
+            class="site-link"
             :href="video.link"
             target="_blank"
             rel="noopener"
@@ -199,6 +195,8 @@ const videos = [
 .about__img {
   width: 40%;
   height: auto;
+  max-width: 500px;
+  margin: 0 auto;
   @include sp {
     width: auto;
   }
@@ -222,6 +220,7 @@ const videos = [
 }
 .about__item:nth-of-type(2) {
   font-size: 1.5rem;
+  line-height: 1;
   margin-bottom: 10px;
 }
 
@@ -335,11 +334,18 @@ const videos = [
 .works-three {
   padding: 0 5%;
   max-width: 1400px;
-  margin: 30px auto;
+  margin: 50px auto;
    &__container {
   max-width: 800px;
   margin: 50px auto;
   color: #787069;
+  }
+}
+
+.site-link {
+  color: #242322;
+  :hover {
+    color: #63605e;
   }
 }
 </style>

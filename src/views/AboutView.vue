@@ -80,7 +80,7 @@ onMounted(() => {
             </span>/
             <span class="skill__inline-skill">
               <span class="skill__name">jQuery(6カ月)</span>
-              <span class="skill__detail">レガシー対応のためのjQuery使用経験あり。</span>
+              <span class="skill__detail">動的なUIの実装や、フォームのバリデーション、スムーズなアニメーション表現などの経験あり。</span>
             </span>/
             <span class="skill__inline-skill">
               <span class="skill__name">Vue.js(1.5カ月)</span>
@@ -98,15 +98,15 @@ onMounted(() => {
           <div class="skill__inline-list">
             <span class="skill__inline-skill">
               <span class="skill__name">Illustrator(6カ月)</span>
-              <span class="skill__detail">図形やアイコン制作、バナー作成、ベクターデータの入稿経験あり。</span>
+              <span class="skill__detail">簡単な画像編集や図形作成、バナー・アイコン制作などの基本操作が可能</span>
             </span>/
             <span class="skill__inline-skill">
               <span class="skill__name">Photoshop(6カ月)</span>
-              <span class="skill__detail">簡単な写真加工、色調補正、SNS用のサムネイル作成など。</span>
+              <span class="skill__detail">簡単な写真加工、色調補正など可能。</span>
             </span>/
             <span class="skill__inline-skill">
               <span class="skill__name">Figma(5カ月)</span>
-              <span class="skill__detail">WebデザインカンプやUI/UXワイヤーフレーム作成が可能。</span>
+              <span class="skill__detail">Webデザインカンプやワイヤーフレーム作成が可能。</span>
             </span>
           </div>
         </li>
@@ -328,8 +328,7 @@ section {
     min-width: 190px;
     max-width: 280px;
     white-space: pre-line;
-    @media (max-width: 900px) {
-      min-width: 120px;
+    @include sp {
       font-size: 0.96em;
     }
   }
