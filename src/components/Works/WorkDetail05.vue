@@ -25,8 +25,8 @@ const workData = {
         メインビジュアルでは明朝体を採用し、キャッチコピーは縦書きで配置することで、上品さと独自性を演出しています。
       </p>
       
-      <h5 class="point__title">デザインコンセプト</h5>
-      <p>コーディング：全体のSCSS設計はBEMに従い、保守性を意識しました。</p>
+      <h5 class="point__title">コーディング</h5>
+      <p>全体のSCSS設計はBEMに従い、保守性を意識しました。</p>
     </template>
   </WorkDetailLayout>
 </template>

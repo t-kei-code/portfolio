@@ -24,6 +24,12 @@ const workData = {
         全ページwordpressテーマ化をし、管理画面から自由にコンテンツを変更できるよう実装しました。<br>
         また、お知らせ記事を管理できる投稿機能を実装し、トップページには最新記事のリード文が自動的に反映されるように設計しました。
       </p>
+
+      <h5 class="point__title">コーディング</h5>
+      <p>全体のSCSS設計はBEMに従い、保守性を意識しました。</p>
+
+      <h5 class="point__title">デザイン</h5>
+      <p>青と白を基調に信頼感を表現しました。</p>
       
       <!-- <img src="/public/image 36.png" alt="">
       <img src="/public/image 37.png" alt="">
