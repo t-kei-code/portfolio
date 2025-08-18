@@ -87,7 +87,7 @@ onMounted(() => {
               <span class="skill__detail">コンポーネント化、リアクティブなデータ連携など基本操作が可能。</span>
             </span>/
             <span class="skill__inline-skill">
-              <span class="skill__name">WordPress(1.5か月)</span>
+              <span class="skill__name">WordPress(3か月)</span>
               <span class="skill__detail">WordPressテーマ作成経験あり。</span>
             </span>
           </div>
