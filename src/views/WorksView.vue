@@ -1,5 +1,6 @@
 <script setup>
 import { useRoute } from 'vue-router'
+import WorkDetail00 from '@/components/Works/WorkDetail00.vue'
 import WorkDetail01 from '@/components/Works/WorkDetail01.vue'
 import WorkDetail02 from '@/components/Works/WorkDetail02.vue'
 import WorkDetail03 from '@/components/Works/WorkDetail03.vue'
@@ -12,6 +13,7 @@ const route = useRoute()
 const workId = route.params.id
 
 const works = {
+  work00: WorkDetail00,
   work01: WorkDetail01,
   work02: WorkDetail02,
   work03: WorkDetail03,

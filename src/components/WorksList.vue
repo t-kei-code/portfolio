@@ -5,6 +5,7 @@ import { RouterLink } from 'vue-router'
 const baseURL = import.meta.env.BASE_URL
 
 const works = [
+  { id: 'work00', title: '採用特設サイト 株式会社TETOTE コーポレートサイト', category: 'コーディング/WordPress化', occupation: '課題', image: 'tetote.png' },
   { id: 'work01', title: '合同会社Work様 ホームページ', category: 'デザイン/コーディング/WordPress化', occupation: 'クライアントワーク', image: 'work.png' },
   { id: 'work02', title: 'KEI TSUKAMOTO ポートフォリオサイト', category: 'デザイン/コーディング', occupation: '個人製作', image: 'portfolio.png' },
   { id: 'work03', title: '青牡丹工務店 コーポレートサイト', category: 'コーディング', occupation: '課題', image: 'aobotan.png' },
